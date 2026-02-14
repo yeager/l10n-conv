@@ -58,22 +58,8 @@ def _process_batch(input_path: str, callback, **kwargs):
                     console.print(f"[yellow]⚠ Skipping {fpath}: {e}[/yellow]")
 
 
-def _show_about(ctx, param, value):
-    if not value or ctx.resilient_parsing:
-        return
-    click.echo(f"l10n-conv {__version__}")
-    click.echo("Universal localization file converter, validator, and compiler")
-    click.echo()
-    click.echo("Author:  Daniel Nylander <daniel@danielnylander.se>")
-    click.echo("License: GPL-3.0-or-later")
-    click.echo("Website: https://github.com/yeager/l10n-conv")
-    click.echo("PyPI:    https://pypi.org/project/l10n-conv/")
-    ctx.exit()
-
-
 @click.group()
 @click.version_option(__version__, prog_name="l10n-conv")
-@click.option("--about", is_flag=True, callback=_show_about, expose_value=False, is_eager=True, help="Show application info and exit")
 @click.option("-v", "--verbose", is_flag=True, help="Verbose output")
 @click.pass_context
 def main(ctx, verbose):
