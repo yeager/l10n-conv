@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import os
 import sys
-import glob
 
 import click
 from rich.console import Console
