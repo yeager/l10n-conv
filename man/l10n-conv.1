@@ -1,0 +1,62 @@
+.TH L10N-CONV 1 "February 2026" "l10n-conv 1.0.0" "User Commands"
+.SH NAME
+l10n-conv \- universal localization file converter, validator, and compiler
+.SH SYNOPSIS
+.B l10n-conv
+[\fIOPTIONS\fR] \fICOMMAND\fR [\fIARGS\fR]
+.SH DESCRIPTION
+l10n-conv converts, validates, and compiles localization files across 16+ formats
+including Gettext PO/MO, Qt TS/QM, XLIFF, Android XML, iOS Strings, JSON, YAML,
+and many more.
+.SH COMMANDS
+.TP
+.B convert \fIINPUT\fR [\-f FORMAT] [\-\-to FORMAT] [\-o OUTPUT]
+Convert between localization formats. Auto-detects input format.
+.TP
+.B compile \fIINPUT\fR \-o \fIOUTPUT\fR
+Compile PO\(->MO or TS\(->QM.
+.TP
+.B extract \fISOURCE_DIR\fR \-o \fIOUTPUT\fR
+Extract translatable strings from source code (Python, C/C++, JS/TS, QML).
+.TP
+.B check \fIFILE\fR
+Validate a localization file for issues.
+.TP
+.B stats \fIFILE\fR
+Show translation statistics.
+.TP
+.B merge \fIBASE\fR \fIUPDATE\fR \-o \fIOUTPUT\fR
+Merge two localization files.
+.TP
+.B diff \fIFILE1\fR \fIFILE2\fR
+Show differences between two files.
+.TP
+.B init \fITEMPLATE\fR \-l \fILANG\fR \-o \fIOUTPUT\fR
+Create a new language file from a template.
+.SH OPTIONS
+.TP
+.B \-v, \-\-verbose
+Verbose output.
+.TP
+.B \-\-dry\-run
+Preview without writing files.
+.TP
+.B \-\-batch
+Process directories recursively.
+.TP
+.B \-\-version
+Show version.
+.SH EXIT STATUS
+.TP
+.B 0
+Success.
+.TP
+.B 1
+Error.
+.TP
+.B 2
+Warnings found.
+.SH AUTHOR
+Daniel Nylander <daniel@danielnylander.se>
+.SH LICENSE
+GPL-3.0-or-later

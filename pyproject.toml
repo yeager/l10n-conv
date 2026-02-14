@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "l10n-conv"
+version = "1.0.0"
+description = "Universal localization file converter, validator, and compiler — lupdate + lrelease for all l10n formats"
+readme = "README.md"
+license = "GPL-3.0-or-later"
+requires-python = ">=3.9"
+authors = [
+    {name = "Daniel Nylander", email = "daniel@danielnylander.se"},
+]
+keywords = ["localization", "i18n", "l10n", "gettext", "xliff", "translation", "converter"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Localization",
+    "Topic :: Software Development :: Internationalization",
+    "Topic :: Text Processing",
+]
+dependencies = [
+    "click>=8.0",
+    "polib>=1.2",
+    "babel>=2.12",
+    "lxml>=4.9",
+    "rich>=13.0",
+    "pyyaml>=6.0",
+    "ruamel.yaml>=0.18",
+]
+
+[project.urls]
+Homepage = "https://github.com/yeager/l10n-conv"
+Repository = "https://github.com/yeager/l10n-conv"
+Issues = "https://github.com/yeager/l10n-conv/issues"
+
+[project.scripts]
+l10n-conv = "l10n_conv.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
