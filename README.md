@@ -110,6 +110,21 @@ l10n-conv convert locale/ --to json -o output/ --batch
 - `1` — Error
 - `2` — Warnings
 
+## 🌍 Contributing Translations
+
+This app is translated via Transifex. Help translate it into your language!
+
+**[→ Translate on Transifex](https://app.transifex.com/danielnylander/l10n-conv/)**
+
+Currently supported: Swedish (sv). More languages welcome!
+
+### For Translators
+1. Create a free account at [Transifex](https://www.transifex.com)
+2. Join the [danielnylander](https://app.transifex.com/danielnylander/) organization
+3. Start translating!
+
+Translations are automatically synced via GitHub Actions.
+
 ## License
 
 GPL-3.0-or-later — Daniel Nylander <daniel@danielnylander.se>
