@@ -63,10 +63,11 @@ def _show_about(ctx, param, value):
     click.echo(f"l10n-conv {__version__}")
     click.echo("Universal localization file converter, validator, and compiler")
     click.echo()
-    click.echo("Author:  Daniel Nylander <daniel@danielnylander.se>")
-    click.echo("License: GPL-3.0-or-later")
-    click.echo("Website: https://github.com/yeager/l10n-conv")
-    click.echo("PyPI:    https://pypi.org/project/l10n-conv/")
+    click.echo("Author:     Daniel Nylander <daniel@danielnylander.se>")
+    click.echo("License:    GPL-3.0-or-later")
+    click.echo("Website:    https://github.com/yeager/l10n-conv")
+    click.echo("PyPI:       https://pypi.org/project/l10n-conv/")
+    click.echo("Translate:  https://app.transifex.com/danielnylander/l10n-conv/")
     ctx.exit()
 
 
