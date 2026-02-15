@@ -1,0 +1,12 @@
+Package: l10n-conv
+Version: 1.0.1
+Section: devel
+Priority: optional
+Architecture: all
+Depends: python3 (>= 3.9), python3-click, python3-polib, python3-babel, python3-lxml, python3-rich, python3-yaml
+Maintainer: Daniel Nylander <daniel@danielnylander.se>
+Description: Universal localization file converter, validator, and compiler
+ l10n-conv converts, validates, and compiles localization files across 16+
+ formats including Gettext PO/MO, Qt TS, XLIFF, Android XML, iOS Strings,
+ JSON, YAML, CSV, TMX, TBX, PHP, ARB, Fluent, RESX, and Properties.
+Homepage: https://github.com/yeager/l10n-conv
