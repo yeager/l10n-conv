@@ -1,0 +1,479 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2026-02-15 15:39+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. type: TH
+#: data/man/l10n-conv.1:1
+#, no-wrap
+msgid "L10N-CONV"
+msgstr ""
+
+#. type: TH
+#: data/man/l10n-conv.1:1
+#, no-wrap
+msgid "2026-02-15"
+msgstr ""
+
+#. type: TH
+#: data/man/l10n-conv.1:1
+#, no-wrap
+msgid "Daniel Nylander"
+msgstr ""
+
+#. type: TH
+#: data/man/l10n-conv.1:1
+#, no-wrap
+msgid "l10n-conv Manual"
+msgstr ""
+
+#. type: SH
+#: data/man/l10n-conv.1:2
+#, no-wrap
+msgid "NAME"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:4
+msgid ""
+"l10n-conv - Universal localization file converter, validator, and compiler"
+msgstr ""
+
+#. type: SH
+#: data/man/l10n-conv.1:4
+#, no-wrap
+msgid "SYNOPSIS"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:9
+msgid "B<l10n-conv> [I<OPTIONS>] I<COMMAND> [I<ARGS>]"
+msgstr ""
+
+#. type: SH
+#: data/man/l10n-conv.1:9
+#, no-wrap
+msgid "DESCRIPTION"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:11
+msgid ""
+"B<l10n-conv> is a universal localization file converter, validator, and "
+"compiler supporting 16+ formats including Gettext PO/MO, Qt TS, XLIFF, Java "
+"Properties, Android XML, iOS Strings, JSON, YAML, CSV/TSV, TMX, TBX, PHP, "
+"ARB, Fluent, and Windows RESX."
+msgstr ""
+
+#. type: SH
+#: data/man/l10n-conv.1:11
+#, no-wrap
+msgid "OPTIONS"
+msgstr ""
+
+#. type: TP
+#: data/man/l10n-conv.1:12
+#, no-wrap
+msgid "B<--version>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:15
+msgid "Show version number and exit."
+msgstr ""
+
+#. type: TP
+#: data/man/l10n-conv.1:15
+#, no-wrap
+msgid "B<-v>, B<--verbose>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:18
+msgid "Verbose output."
+msgstr ""
+
+#. type: TP
+#: data/man/l10n-conv.1:18
+#, no-wrap
+msgid "B<--about>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:21
+msgid "Show application info and exit."
+msgstr ""
+
+#. type: SH
+#: data/man/l10n-conv.1:21
+#, no-wrap
+msgid "COMMANDS"
+msgstr ""
+
+#. type: TP
+#: data/man/l10n-conv.1:22
+#, no-wrap
+msgid "B<convert>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:25
+msgid "Convert between localization file formats."
+msgstr ""
+
+#. type: TP
+#: data/man/l10n-conv.1:26 data/man/l10n-conv.1:49
+#, no-wrap
+msgid "I<INPUT>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:29 data/man/l10n-conv.1:52
+msgid "Input file path."
+msgstr ""
+
+#. type: TP
+#: data/man/l10n-conv.1:29 data/man/l10n-conv.1:77
+#, no-wrap
+msgid "B<-f>, B<--format> I<FMT>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:32
+msgid "Input format."
+msgstr ""
+
+#. type: TP
+#: data/man/l10n-conv.1:32
+#, no-wrap
+msgid "B<--to> I<FMT>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:35
+msgid "Output format."
+msgstr ""
+
+#. type: TP
+#: data/man/l10n-conv.1:35 data/man/l10n-conv.1:52 data/man/l10n-conv.1:66
+#: data/man/l10n-conv.1:99 data/man/l10n-conv.1:127
+#, no-wrap
+msgid "B<-o>, B<--output> I<FILE>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:38
+msgid "Output file (- for stdout)."
+msgstr ""
+
+#. type: TP
+#: data/man/l10n-conv.1:38 data/man/l10n-conv.1:55 data/man/l10n-conv.1:102
+#, no-wrap
+msgid "B<--dry-run>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:41 data/man/l10n-conv.1:58 data/man/l10n-conv.1:105
+msgid "Show what would be done."
+msgstr ""
+
+#. type: TP
+#: data/man/l10n-conv.1:41
+#, no-wrap
+msgid "B<--batch>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:44
+msgid "Process directory recursively."
+msgstr ""
+
+#. type: TP
+#: data/man/l10n-conv.1:45
+#, no-wrap
+msgid "B<compile>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:48
+msgid "Compile translation files (e.g., PO to MO)."
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:55 data/man/l10n-conv.1:69
+msgid "Output file (required)."
+msgstr ""
+
+#. type: TP
+#: data/man/l10n-conv.1:59
+#, no-wrap
+msgid "B<extract>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:62
+msgid "Extract translatable strings from source code."
+msgstr ""
+
+#. type: TP
+#: data/man/l10n-conv.1:63
+#, no-wrap
+msgid "I<SOURCE_DIR>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:66
+msgid "Source directory."
+msgstr ""
+
+#. type: TP
+#: data/man/l10n-conv.1:70
+#, no-wrap
+msgid "B<check>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:73
+msgid "Validate a translation file."
+msgstr ""
+
+#. type: TP
+#: data/man/l10n-conv.1:74 data/man/l10n-conv.1:85
+#, no-wrap
+msgid "I<FILE>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:77
+msgid "File to check."
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:80
+msgid "File format."
+msgstr ""
+
+#. type: TP
+#: data/man/l10n-conv.1:81
+#, no-wrap
+msgid "B<stats>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:84
+msgid "Show statistics for a translation file."
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:88
+msgid "File to analyze."
+msgstr ""
+
+#. type: TP
+#: data/man/l10n-conv.1:89
+#, no-wrap
+msgid "B<merge>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:92
+msgid "Merge two translation files."
+msgstr ""
+
+#. type: TP
+#: data/man/l10n-conv.1:93
+#, no-wrap
+msgid "I<BASE>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:96
+msgid "Base file."
+msgstr ""
+
+#. type: TP
+#: data/man/l10n-conv.1:96
+#, no-wrap
+msgid "I<UPDATE>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:99
+msgid "Update file."
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:102 data/man/l10n-conv.1:130
+msgid "Output file."
+msgstr ""
+
+#. type: TP
+#: data/man/l10n-conv.1:106
+#, no-wrap
+msgid "B<diff>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:109
+msgid "Compare two translation files."
+msgstr ""
+
+#. type: TP
+#: data/man/l10n-conv.1:110
+#, no-wrap
+msgid "I<FILE1>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:113
+msgid "First file."
+msgstr ""
+
+#. type: TP
+#: data/man/l10n-conv.1:113
+#, no-wrap
+msgid "I<FILE2>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:116
+msgid "Second file."
+msgstr ""
+
+#. type: TP
+#: data/man/l10n-conv.1:117
+#, no-wrap
+msgid "B<init>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:120
+msgid "Create a new translation file from a template."
+msgstr ""
+
+#. type: TP
+#: data/man/l10n-conv.1:121
+#, no-wrap
+msgid "I<TEMPLATE>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:124
+msgid "Template file."
+msgstr ""
+
+#. type: TP
+#: data/man/l10n-conv.1:124
+#, no-wrap
+msgid "I<LANG>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:127
+msgid "Target language code."
+msgstr ""
+
+#. type: TP
+#: data/man/l10n-conv.1:131
+#, no-wrap
+msgid "B<formats>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:134
+msgid "List all supported formats."
+msgstr ""
+
+#. type: SH
+#: data/man/l10n-conv.1:134
+#, no-wrap
+msgid "EXAMPLES"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:144
+#, no-wrap
+msgid ""
+"l10n-conv convert messages.po --to json -o messages.json\n"
+"l10n-conv compile messages.po -o messages.mo\n"
+"l10n-conv check translations.xliff\n"
+"l10n-conv stats messages.po\n"
+"l10n-conv merge base.po update.po -o merged.po\n"
+"l10n-conv diff old.po new.po\n"
+"l10n-conv init template.pot sv -o sv.po\n"
+"l10n-conv formats\n"
+msgstr ""
+
+#. type: SH
+#: data/man/l10n-conv.1:145
+#, no-wrap
+msgid "FILES"
+msgstr ""
+
+#. type: TP
+#: data/man/l10n-conv.1:146
+#, no-wrap
+msgid "I<~/.config/l10n-conv/>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:149
+msgid "Configuration files."
+msgstr ""
+
+#. type: TP
+#: data/man/l10n-conv.1:149
+#, no-wrap
+msgid "I<~/.cache/l10n-conv/>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:152
+msgid "Cached data."
+msgstr ""
+
+#. type: SH
+#: data/man/l10n-conv.1:152
+#, no-wrap
+msgid "BUGS"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:154
+msgid "Report bugs at https://github.com/yeager/l10n-conv/issues"
+msgstr ""
+
+#. type: SH
+#: data/man/l10n-conv.1:154
+#, no-wrap
+msgid "AUTHOR"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:156
+msgid "Daniel Nylander E<lt>daniel@danielnylander.seE<gt>"
+msgstr ""
+
+#. type: SH
+#: data/man/l10n-conv.1:156
+#, no-wrap
+msgid "SEE ALSO"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:157
+msgid "Project homepage: https://github.com/yeager/l10n-conv"
+msgstr ""

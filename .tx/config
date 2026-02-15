@@ -1,0 +1,8 @@
+[main]
+host = https://www.transifex.com
+
+[o:danielnylander:p:l10n-conv:r:l10n-conv-man]
+file_filter  = po/man/<lang>.po
+source_file  = po/man/l10n-conv.1.pot
+source_lang  = en
+type         = PO
