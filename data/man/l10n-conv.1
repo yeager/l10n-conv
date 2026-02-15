@@ -1,0 +1,157 @@
+.TH L10N-CONV 1 "2026-02-15" "Daniel Nylander" "l10n-conv Manual"
+.SH NAME
+l10n-conv - Universal localization file converter, validator, and compiler
+.SH SYNOPSIS
+.B l10n-conv
+.RI [ OPTIONS ]
+.I COMMAND
+.RI [ ARGS ]
+.SH DESCRIPTION
+\fBl10n-conv\fR is a universal localization file converter, validator, and compiler supporting 16+ formats including Gettext PO/MO, Qt TS, XLIFF, Java Properties, Android XML, iOS Strings, JSON, YAML, CSV/TSV, TMX, TBX, PHP, ARB, Fluent, and Windows RESX.
+.SH OPTIONS
+.TP
+.BR \-\-version
+Show version number and exit.
+.TP
+.BR \-v ", " \-\-verbose
+Verbose output.
+.TP
+.B \-\-about
+Show application info and exit.
+.SH COMMANDS
+.TP
+.B convert
+Convert between localization file formats.
+.RS
+.TP
+.I INPUT
+Input file path.
+.TP
+.BR \-f ", " \-\-format " " \fIFMT\fR
+Input format.
+.TP
+.BR \-\-to " " \fIFMT\fR
+Output format.
+.TP
+.BR \-o ", " \-\-output " " \fIFILE\fR
+Output file (\- for stdout).
+.TP
+.B \-\-dry\-run
+Show what would be done.
+.TP
+.B \-\-batch
+Process directory recursively.
+.RE
+.TP
+.B compile
+Compile translation files (e.g., PO to MO).
+.RS
+.TP
+.I INPUT
+Input file path.
+.TP
+.BR \-o ", " \-\-output " " \fIFILE\fR
+Output file (required).
+.TP
+.B \-\-dry\-run
+Show what would be done.
+.RE
+.TP
+.B extract
+Extract translatable strings from source code.
+.RS
+.TP
+.I SOURCE_DIR
+Source directory.
+.TP
+.BR \-o ", " \-\-output " " \fIFILE\fR
+Output file (required).
+.RE
+.TP
+.B check
+Validate a translation file.
+.RS
+.TP
+.I FILE
+File to check.
+.TP
+.BR \-f ", " \-\-format " " \fIFMT\fR
+File format.
+.RE
+.TP
+.B stats
+Show statistics for a translation file.
+.RS
+.TP
+.I FILE
+File to analyze.
+.RE
+.TP
+.B merge
+Merge two translation files.
+.RS
+.TP
+.I BASE
+Base file.
+.TP
+.I UPDATE
+Update file.
+.TP
+.BR \-o ", " \-\-output " " \fIFILE\fR
+Output file.
+.TP
+.B \-\-dry\-run
+Show what would be done.
+.RE
+.TP
+.B diff
+Compare two translation files.
+.RS
+.TP
+.I FILE1
+First file.
+.TP
+.I FILE2
+Second file.
+.RE
+.TP
+.B init
+Create a new translation file from a template.
+.RS
+.TP
+.I TEMPLATE
+Template file.
+.TP
+.I LANG
+Target language code.
+.TP
+.BR \-o ", " \-\-output " " \fIFILE\fR
+Output file.
+.RE
+.TP
+.B formats
+List all supported formats.
+.SH EXAMPLES
+.nf
+l10n-conv convert messages.po --to json -o messages.json
+l10n-conv compile messages.po -o messages.mo
+l10n-conv check translations.xliff
+l10n-conv stats messages.po
+l10n-conv merge base.po update.po -o merged.po
+l10n-conv diff old.po new.po
+l10n-conv init template.pot sv -o sv.po
+l10n-conv formats
+.fi
+.SH FILES
+.TP
+.I ~/.config/l10n-conv/
+Configuration files.
+.TP
+.I ~/.cache/l10n-conv/
+Cached data.
+.SH BUGS
+Report bugs at https://github.com/yeager/l10n-conv/issues
+.SH AUTHOR
+Daniel Nylander <daniel@danielnylander.se>
+.SH SEE ALSO
+Project homepage: https://github.com/yeager/l10n-conv

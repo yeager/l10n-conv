@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import os
 import sys
 
@@ -75,11 +76,15 @@ def _show_about(ctx, param, value):
 @click.version_option(__version__, prog_name="l10n-conv")
 @click.option("--about", is_flag=True, callback=_show_about, expose_value=False, is_eager=True, help="Show application info and exit")
 @click.option("-v", "--verbose", is_flag=True, help="Verbose output")
+@click.option("-j", "--json", "json_output", is_flag=True, help="JSON output")
+@click.option("-q", "--quiet", is_flag=True, help="Suppress non-essential output (only errors)")
 @click.pass_context
-def main(ctx, verbose):
+def main(ctx, verbose, json_output, quiet):
     """l10n-conv — Universal localization file converter, validator, and compiler."""
     ctx.ensure_object(dict)
     ctx.obj["verbose"] = verbose
+    ctx.obj["json"] = json_output
+    ctx.obj["quiet"] = quiet
 
 
 @main.command()
@@ -200,15 +205,11 @@ def check(ctx, file, fmt):
     catalog, detected = _read_catalog(file, fmt)
     results = check_catalog(catalog)
 
-    if not results:
-        console.print(f"[green]✓[/green] {file}: No issues found")
-        sys.exit(0)
+    json_output = ctx.obj.get("json")
+    quiet = ctx.obj.get("quiet")
 
     errors = warnings = infos = 0
     for r in results:
-        icon = {"error": "[red]✗[/red]", "warning": "[yellow]⚠[/yellow]", "info": "[blue]ℹ[/blue]"}
-        console.print(f"  {icon.get(r.level, '?')} {r.message}: {r.key}" +
-                       (f" ({r.details})" if r.details else ""))
         if r.level == "error":
             errors += 1
         elif r.level == "warning":
@@ -216,8 +217,27 @@ def check(ctx, file, fmt):
         else:
             infos += 1
 
-    console.print(f"\n{errors} errors, {warnings} warnings, {infos} info")
-    sys.exit(1 if errors else (2 if warnings else 0))
+    if json_output:
+        data = {
+            "file": file,
+            "issues": [{"level": r.level, "message": r.message, "key": r.key,
+                         "details": r.details} for r in results],
+            "errors": errors,
+            "warnings": warnings,
+            "info": infos,
+        }
+        click.echo(json.dumps(data, indent=2, ensure_ascii=False))
+    elif not quiet:
+        if not results:
+            console.print(f"[green]✓[/green] {file}: No issues found")
+        else:
+            for r in results:
+                icon = {"error": "[red]✗[/red]", "warning": "[yellow]⚠[/yellow]", "info": "[blue]ℹ[/blue]"}
+                console.print(f"  {icon.get(r.level, '?')} {r.message}: {r.key}" +
+                               (f" ({r.details})" if r.details else ""))
+            console.print(f"\n{errors} errors, {warnings} warnings, {infos} info")
+
+    sys.exit(2 if errors else (1 if warnings else 0))
 
 
 @main.command()
@@ -227,21 +247,35 @@ def check(ctx, file, fmt):
 def stats(ctx, file, fmt):
     """Show translation statistics."""
     catalog, detected = _read_catalog(file, fmt)
+    json_output = ctx.obj.get("json")
+    quiet = ctx.obj.get("quiet")
 
-    table = Table(title=f"Statistics: {file}")
-    table.add_column("Metric", style="bold")
-    table.add_column("Value", justify="right")
+    if json_output:
+        data = {
+            "file": file,
+            "total": len(catalog.entries),
+            "translated": catalog.translated_count,
+            "untranslated": catalog.untranslated_count,
+            "fuzzy": catalog.fuzzy_count,
+            "completion_percent": catalog.completion_percent,
+            "language": catalog.target_language,
+        }
+        click.echo(json.dumps(data, indent=2, ensure_ascii=False))
+    elif not quiet:
+        table = Table(title=f"Statistics: {file}")
+        table.add_column("Metric", style="bold")
+        table.add_column("Value", justify="right")
 
-    total = len(catalog.entries)
-    table.add_row("Total entries", str(total))
-    table.add_row("Translated", f"[green]{catalog.translated_count}[/green]")
-    table.add_row("Untranslated", f"[red]{catalog.untranslated_count}[/red]")
-    table.add_row("Fuzzy", f"[yellow]{catalog.fuzzy_count}[/yellow]")
-    table.add_row("Completion", f"{catalog.completion_percent}%")
-    if catalog.target_language:
-        table.add_row("Language", catalog.target_language)
+        total = len(catalog.entries)
+        table.add_row("Total entries", str(total))
+        table.add_row("Translated", f"[green]{catalog.translated_count}[/green]")
+        table.add_row("Untranslated", f"[red]{catalog.untranslated_count}[/red]")
+        table.add_row("Fuzzy", f"[yellow]{catalog.fuzzy_count}[/yellow]")
+        table.add_row("Completion", f"{catalog.completion_percent}%")
+        if catalog.target_language:
+            table.add_row("Language", catalog.target_language)
 
-    out_console.print(table)
+        out_console.print(table)
 
 
 @main.command()
@@ -295,24 +329,39 @@ def diff(ctx, file1, file2, fmt):
 
     all_keys = sorted(set(map1.keys()) | set(map2.keys()))
 
+    json_output = ctx.obj.get("json")
+    quiet = ctx.obj.get("quiet")
+
     added = removed = changed = 0
+    changes = []
     for key in all_keys:
         e1 = map1.get(key)
         e2 = map2.get(key)
 
         if e1 and not e2:
-            console.print(f"[red]- {key[0]}[/red]: {e1.target}")
+            changes.append({"type": "removed", "key": key[0], "old": e1.target})
             removed += 1
         elif e2 and not e1:
-            console.print(f"[green]+ {key[0]}[/green]: {e2.target}")
+            changes.append({"type": "added", "key": key[0], "new": e2.target})
             added += 1
         elif e1.target != e2.target:
-            console.print(f"[yellow]~ {key[0]}[/yellow]:")
-            console.print(f"  [red]- {e1.target}[/red]")
-            console.print(f"  [green]+ {e2.target}[/green]")
+            changes.append({"type": "changed", "key": key[0], "old": e1.target, "new": e2.target})
             changed += 1
 
-    console.print(f"\n{added} added, {removed} removed, {changed} changed")
+    if json_output:
+        click.echo(json.dumps({"added": added, "removed": removed, "changed": changed,
+                                "changes": changes}, indent=2, ensure_ascii=False))
+    elif not quiet:
+        for c in changes:
+            if c["type"] == "removed":
+                console.print(f"[red]- {c['key']}[/red]: {c['old']}")
+            elif c["type"] == "added":
+                console.print(f"[green]+ {c['key']}[/green]: {c['new']}")
+            else:
+                console.print(f"[yellow]~ {c['key']}[/yellow]:")
+                console.print(f"  [red]- {c['old']}[/red]")
+                console.print(f"  [green]+ {c['new']}[/green]")
+        console.print(f"\n{added} added, {removed} removed, {changed} changed")
 
 
 @main.command()
@@ -342,20 +391,21 @@ def init(ctx, template, lang, output, fmt, dry_run):
 
 
 @main.command(name="formats")
-def list_formats_cmd():
+@click.pass_context
+def list_formats_cmd(ctx):
     """List all supported formats."""
-    table = Table(title="Supported Formats")
-    table.add_column("Format", style="bold")
-    table.add_column("Extensions")
-
     from .registry import _EXT_MAP
     fmt_exts: dict[str, list[str]] = {}
     for ext, fmt in _EXT_MAP.items():
         fmt_exts.setdefault(fmt, []).append(ext)
 
-    for fmt in list_formats():
-        exts = ", ".join(fmt_exts.get(fmt, []))
-        out_console.print(f"  [bold]{fmt}[/bold]  {exts}")
+    if ctx.obj.get("json"):
+        data = {fmt: fmt_exts.get(fmt, []) for fmt in list_formats()}
+        click.echo(json.dumps(data, indent=2, ensure_ascii=False))
+    elif not ctx.obj.get("quiet"):
+        for fmt in list_formats():
+            exts = ", ".join(fmt_exts.get(fmt, []))
+            out_console.print(f"  [bold]{fmt}[/bold]  {exts}")
 
 
 if __name__ == "__main__":
