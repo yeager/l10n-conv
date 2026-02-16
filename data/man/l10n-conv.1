@@ -1,157 +1,212 @@
-.TH L10N-CONV 1 "2026-02-15" "Daniel Nylander" "l10n-conv Manual"
+.TH L10N-CONV 1 "February 2026" "l10n-conv 1.0.4" "User Commands"
 .SH NAME
-l10n-conv - Universal localization file converter, validator, and compiler
+l10n\-conv \- universal localization file converter, validator, and compiler
 .SH SYNOPSIS
-.B l10n-conv
-.RI [ OPTIONS ]
-.I COMMAND
-.RI [ ARGS ]
+.B l10n\-conv
+[\fIGLOBAL\-OPTIONS\fR] \fICOMMAND\fR [\fICOMMAND\-OPTIONS\fR] [\fIARGS\fR]
 .SH DESCRIPTION
-\fBl10n-conv\fR is a universal localization file converter, validator, and compiler supporting 16+ formats including Gettext PO/MO, Qt TS, XLIFF, Java Properties, Android XML, iOS Strings, JSON, YAML, CSV/TSV, TMX, TBX, PHP, ARB, Fluent, and Windows RESX.
-.SH OPTIONS
+\fBl10n\-conv\fR converts between different localization file formats,
+validates translation files, compiles them to binary formats, extracts
+translatable strings from source code, and shows translation statistics.
+.PP
+Supported formats include PO (gettext), XLIFF, TS (Qt), JSON, YAML,
+ARB (Flutter/Dart), Properties (Java), Strings (Apple), Android XML,
+and more.
+.PP
+Format auto\-detection is used when possible; use \fB\-f\fR/\fB\-\-format\fR
+to override.
+.SH GLOBAL OPTIONS
 .TP
-.BR \-\-version
+\fB\-j\fR, \fB\-\-json\fR
+Output results as JSON for all commands.
+.TP
+\fB\-q\fR, \fB\-\-quiet\fR
+Suppress non\-essential output. Only errors are shown.
+.TP
+\fB\-v\fR, \fB\-\-verbose\fR
+Verbose output with progress details.
+.TP
+\fB\-\-about\fR
+Show application info (name, version, author, license) and exit.
+.TP
+\fB\-\-version\fR
 Show version number and exit.
-.TP
-.BR \-v ", " \-\-verbose
-Verbose output.
-.TP
-.B \-\-about
-Show application info and exit.
 .SH COMMANDS
-.TP
-.B convert
+.SS convert
 Convert between localization file formats.
+.PP
+.B l10n\-conv convert
+\fIINPUT\fR [\fIOPTIONS\fR]
+.TP
+\fIINPUT\fR
+Input file path, or \fB\-\fR for stdin.
+.TP
+\fB\-f\fR, \fB\-\-format\fR \fIFORMAT\fR
+Input format. Auto\-detected from file extension if omitted. Required
+when reading from stdin.
+.TP
+\fB\-\-to\fR \fIFORMAT\fR
+Output format. Required unless \fB\-o\fR specifies a file with a
+recognizable extension.
+.TP
+\fB\-o\fR, \fB\-\-output\fR \fIFILE\fR
+Output file. Use \fB\-\fR for stdout.
+.TP
+\fB\-\-dry\-run\fR
+Show what would be done without writing files.
+.TP
+\fB\-\-batch\fR
+Process all files in a directory recursively.
+.PP
+Example:
 .RS
-.TP
-.I INPUT
-Input file path.
-.TP
-.BR \-f ", " \-\-format " " \fIFMT\fR
-Input format.
-.TP
-.BR \-\-to " " \fIFMT\fR
-Output format.
-.TP
-.BR \-o ", " \-\-output " " \fIFILE\fR
-Output file (\- for stdout).
-.TP
-.B \-\-dry\-run
-Show what would be done.
-.TP
-.B \-\-batch
-Process directory recursively.
-.RE
-.TP
-.B compile
-Compile translation files (e.g., PO to MO).
-.RS
-.TP
-.I INPUT
-Input file path.
-.TP
-.BR \-o ", " \-\-output " " \fIFILE\fR
-Output file (required).
-.TP
-.B \-\-dry\-run
-Show what would be done.
-.RE
-.TP
-.B extract
-Extract translatable strings from source code.
-.RS
-.TP
-.I SOURCE_DIR
-Source directory.
-.TP
-.BR \-o ", " \-\-output " " \fIFILE\fR
-Output file (required).
-.RE
-.TP
-.B check
-Validate a translation file.
-.RS
-.TP
-.I FILE
-File to check.
-.TP
-.BR \-f ", " \-\-format " " \fIFMT\fR
-File format.
-.RE
-.TP
-.B stats
-Show statistics for a translation file.
-.RS
-.TP
-.I FILE
-File to analyze.
-.RE
-.TP
-.B merge
-Merge two translation files.
-.RS
-.TP
-.I BASE
-Base file.
-.TP
-.I UPDATE
-Update file.
-.TP
-.BR \-o ", " \-\-output " " \fIFILE\fR
-Output file.
-.TP
-.B \-\-dry\-run
-Show what would be done.
-.RE
-.TP
-.B diff
-Compare two translation files.
-.RS
-.TP
-.I FILE1
-First file.
-.TP
-.I FILE2
-Second file.
-.RE
-.TP
-.B init
-Create a new translation file from a template.
-.RS
-.TP
-.I TEMPLATE
-Template file.
-.TP
-.I LANG
-Target language code.
-.TP
-.BR \-o ", " \-\-output " " \fIFILE\fR
-Output file.
-.RE
-.TP
-.B formats
-List all supported formats.
-.SH EXAMPLES
 .nf
-l10n-conv convert messages.po --to json -o messages.json
-l10n-conv compile messages.po -o messages.mo
-l10n-conv check translations.xliff
-l10n-conv stats messages.po
-l10n-conv merge base.po update.po -o merged.po
-l10n-conv diff old.po new.po
-l10n-conv init template.pot sv -o sv.po
-l10n-conv formats
+l10n\-conv convert messages.po \-\-to xliff \-o messages.xlf
+l10n\-conv convert \-f po \-\-to json \-o strings.json < input.po
+l10n\-conv convert translations/ \-\-to po \-o output/ \-\-batch
 .fi
-.SH FILES
+.RE
+.SS compile
+Compile localization files to binary formats (.po\[u2192].mo, .ts\[u2192].qm).
+.PP
+.B l10n\-conv compile
+\fIINPUT\fR \fB\-o\fR \fIOUTPUT\fR
 .TP
-.I ~/.config/l10n-conv/
-Configuration files.
+\fIINPUT\fR
+Input file to compile.
 .TP
-.I ~/.cache/l10n-conv/
-Cached data.
-.SH BUGS
-Report bugs at https://github.com/yeager/l10n-conv/issues
+\fB\-o\fR, \fB\-\-output\fR \fIFILE\fR
+Output file path. Required.
+.TP
+\fB\-\-dry\-run\fR
+Show what would be done without writing.
+.PP
+Example:
+.RS
+.nf
+l10n\-conv compile po/sv.po \-o locale/sv/LC_MESSAGES/app.mo
+.fi
+.RE
+.SS extract
+Extract translatable strings from source code files.
+.PP
+.B l10n\-conv extract
+\fISOURCE_DIR\fR \fB\-o\fR \fIOUTPUT\fR [\fIOPTIONS\fR]
+.TP
+\fISOURCE_DIR\fR
+Directory containing source code to scan.
+.TP
+\fB\-o\fR, \fB\-\-output\fR \fIFILE\fR
+Output file for extracted strings. Required.
+.TP
+\fB\-f\fR, \fB\-\-format\fR \fIFORMAT\fR
+Output format. Default: po.
+.TP
+\fB\-\-dry\-run\fR
+Show what would be extracted without writing.
+.PP
+Example:
+.RS
+.nf
+l10n\-conv extract src/ \-o po/messages.pot
+.fi
+.RE
+.SS check
+Validate a localization file for errors and consistency.
+.PP
+.B l10n\-conv check
+\fIFILE\fR [\fB\-f\fR \fIFORMAT\fR]
+.TP
+\fIFILE\fR
+File to validate.
+.TP
+\fB\-f\fR, \fB\-\-format\fR \fIFORMAT\fR
+File format (auto\-detected if omitted).
+.PP
+Example:
+.RS
+.nf
+l10n\-conv check po/sv.po
+l10n\-conv check strings.json \-f json
+.fi
+.RE
+.SS stats
+Show translation statistics for a localization file.
+.PP
+.B l10n\-conv stats
+\fIFILE\fR [\fB\-f\fR \fIFORMAT\fR]
+.TP
+\fIFILE\fR
+File to analyze.
+.TP
+\fB\-f\fR, \fB\-\-format\fR \fIFORMAT\fR
+File format (auto\-detected if omitted).
+.PP
+Shows: total entries, translated, untranslated, fuzzy, completion percentage.
+.PP
+Example:
+.RS
+.nf
+l10n\-conv stats po/sv.po
+  Total: 245, Translated: 230 (93.9%), Fuzzy: 5, Untranslated: 10
+.fi
+.RE
+.SS diff
+Compare two localization files and show differences.
+.PP
+.B l10n\-conv diff
+\fIFILE1\fR \fIFILE2\fR [\fB\-f\fR \fIFORMAT\fR]
+.TP
+\fIFILE1\fR, \fIFILE2\fR
+Files to compare.
+.TP
+\fB\-f\fR, \fB\-\-format\fR \fIFORMAT\fR
+File format (auto\-detected if omitted).
+.PP
+Example:
+.RS
+.nf
+l10n\-conv diff old.po new.po
+.fi
+.RE
+.SS formats
+List all supported file formats and their extensions.
+.PP
+.B l10n\-conv formats
+.PP
+Example:
+.RS
+.nf
+l10n\-conv formats
+  po      .po, .pot       GNU gettext
+  xliff   .xlf, .xliff    XLIFF 1.2/2.0
+  ts      .ts             Qt Linguist
+  json    .json           JSON (i18next, Chrome)
+  ...
+.fi
+.RE
+.SH SUPPORTED FORMATS
+PO/POT (GNU gettext), XLIFF 1.2/2.0, TS (Qt Linguist), JSON (i18next,
+Chrome extensions), YAML, ARB (Flutter/Dart), Properties (Java),
+Strings/Stringsdict (Apple iOS/macOS), Android XML, PHP arrays, CSV.
+.SH EXIT STATUS
+.TP
+.B 0
+Success (conversion completed, file valid, no differences).
+.TP
+.B 1
+Errors found (validation failures, conversion errors, differences found).
+.TP
+.B 2
+Usage error (unknown format, file not found, missing required options).
+.SH SEE ALSO
+.BR l10n\-lint (1),
+.BR po\-translate (1),
+.BR msgfmt (1),
+.BR msgunfmt (1)
 .SH AUTHOR
 Daniel Nylander <daniel@danielnylander.se>
-.SH SEE ALSO
-Project homepage: https://github.com/yeager/l10n-conv
+.SH BUGS
+Report bugs at: https://github.com/yeager/l10n\-conv/issues
+.SH COPYRIGHT
+Copyright \(co 2026 Daniel Nylander. License: GPL\-3.0\-or\-later.
