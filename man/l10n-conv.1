@@ -3,86 +3,270 @@
 l10n-conv \- universal localization file converter, validator, and compiler
 .SH SYNOPSIS
 .B l10n-conv
-[\fIOPTIONS\fR] \fICOMMAND\fR [\fIARGS\fR]
+[\fIGLOBAL_OPTIONS\fR] \fICOMMAND\fR [\fICOMMAND_OPTIONS\fR] [\fIARGS\fR...]
 .SH DESCRIPTION
-l10n-conv converts, validates, and compiles localization files across 16+ formats
-including Gettext PO/MO, Qt TS/QM, XLIFF, Android XML, iOS Strings, JSON, YAML,
-and many more.
+.B l10n-conv
+is a comprehensive tool for working with localization files across
+multiple formats. It provides conversion between 16+ localization formats,
+validation of translation files, compilation of source formats to binary
+formats, extraction of translatable strings from source code, and various
+other localization workflow operations.
+
+Supported formats include GNU gettext PO/MO, Qt Linguist TS/QM, XLIFF 1.2/2.0/2.1,
+Android XML, iOS/macOS Strings, JSON (various schemas), YAML, Java Properties,
+Microsoft RESX, Mozilla Fluent, PHP arrays, TBX (TermBase eXchange), and more.
+.SH GLOBAL OPTIONS
+.TP
+.BR \-\-about
+Show comprehensive application information including version, supported
+formats, feature overview, and copyright details. This provides a complete
+reference for supported functionality.
+.TP
+.BR \-v ", " \-\-verbose
+Enable verbose output mode. Shows detailed processing information including
+file analysis, conversion steps, validation results, and timing data.
+Useful for debugging and understanding tool behavior.
+.TP
+.BR \-j ", " \-\-json
+Format all output as JSON for programmatic consumption. This affects
+all commands that produce structured output including stats, check,
+diff, and list-formats. Error messages remain in plain text.
+.TP
+.BR \-q ", " \-\-quiet
+Suppress non-essential output. Only display errors and final results.
+Progress indicators, informational messages, and warnings are hidden.
+Exit codes still indicate success/failure status.
+.TP
+.BR \-\-version
+Display version information including build date and supported
+format versions, then exit.
 .SH COMMANDS
 .TP
-.B convert \fIINPUT\fR [\-f FORMAT] [\-\-to FORMAT] [\-o OUTPUT]
-Convert between localization formats. Auto-detects input format.
+.B convert \fIINPUT\fR [\-f \fIFORMAT\fR] [\-\-to \fIFORMAT\fR] [\-o \fIOUTPUT\fR] [\-\-dry-run] [\-\-batch]
+Convert localization files between different formats. The tool automatically
+detects the input format unless explicitly specified with \-f. Output format
+is determined by \-\-to or inferred from the output filename extension.
+
+.RS 8
 .TP
-.B compile \fIINPUT\fR \-o \fIOUTPUT\fR
-Compile PO\(->MO or TS\(->QM.
+.BR \-f " " \fIFORMAT\fR ", " \-\-from " " \fIFORMAT\fR
+Explicitly specify input format (overrides auto-detection)
 .TP
-.B extract \fISOURCE_DIR\fR \-o \fIOUTPUT\fR
-Extract translatable strings from source code (Python, C/C++, JS/TS, QML).
+.BR \-\-to " " \fIFORMAT\fR
+Specify output format (required if not inferrable from output filename)
 .TP
-.B check \fIFILE\fR
-Validate a localization file for issues.
+.BR \-o " " \fIOUTPUT\fR ", " \-\-output " " \fIOUTPUT\fR
+Output file path (required for most conversions)
 .TP
-.B stats \fIFILE\fR
-Show translation statistics.
+.BR \-\-dry\-run
+Preview the conversion without writing output files
 .TP
-.B merge \fIBASE\fR \fIUPDATE\fR \-o \fIOUTPUT\fR
-Merge two localization files.
+.BR \-\-batch
+Process multiple files recursively in directories
+.RE
 .TP
-.B diff \fIFILE1\fR \fIFILE2\fR
-Show differences between two files.
+.B compile \fIINPUT\fR \-o \fIOUTPUT\fR [\-\-dry-run]
+Compile localization source files to binary formats. Supports PO→MO
+(GNU gettext) and TS→QM (Qt Linguist) compilation. The output format
+is automatically determined from the input format.
+
+.RS 8
 .TP
-.B init \fITEMPLATE\fR \-l \fILANG\fR \-o \fIOUTPUT\fR
-Create a new language file from a template.
+.BR \-o " " \fIOUTPUT\fR ", " \-\-output " " \fIOUTPUT\fR
+Output file path (required)
+.TP
+.BR \-\-dry\-run
+Show what would be compiled without creating files
+.RE
+.TP
+.B extract \fISOURCE_DIR\fR \-o \fIOUTPUT\fR [\-f \fIFORMAT\fR] [\-\-dry-run]
+Extract translatable strings from source code files. Supports Python
+(gettext calls), C/C++ (printf-style, gettext), JavaScript/TypeScript
+(i18n functions), and QML (qsTr functions). Creates template files
+suitable for translation.
+
+.RS 8
+.TP
+.BR \-o " " \fIOUTPUT\fR ", " \-\-output " " \fIOUTPUT\fR
+Output template file path (required)
+.TP
+.BR \-f " " \fIFORMAT\fR ", " \-\-format " " \fIFORMAT\fR
+Output format for extracted strings (default: po)
+.TP
+.BR \-\-dry\-run
+Show what strings would be extracted without creating files
+.RE
+.TP
+.B check \fIFILE\fR [\-f \fIFORMAT\fR]
+Validate a localization file for syntax errors, missing translations,
+format consistency, and other common issues. Reports problems with
+specific line numbers and suggested fixes where applicable.
+
+.RS 8
+.TP
+.BR \-f " " \fIFORMAT\fR ", " \-\-format " " \fIFORMAT\fR
+Explicitly specify file format (overrides auto-detection)
+.RE
+.TP
+.B stats \fIFILE\fR [\-f \fIFORMAT\fR]
+Display comprehensive translation statistics including total strings,
+translated count, fuzzy entries, untranslated entries, completion
+percentage, and file-specific metadata.
+
+.RS 8
+.TP
+.BR \-f " " \fIFORMAT\fR ", " \-\-format " " \fIFORMAT\fR
+Explicitly specify file format (overrides auto-detection)
+.RE
+.TP
+.B merge \fIBASE\fR \fIUPDATE\fR \-o \fIOUTPUT\fR [\-f \fIFORMAT\fR] [\-\-dry-run]
+Merge two localization files, combining translations from an update
+file into a base file. Handles conflicts by preserving newer translations
+and maintaining existing metadata where possible.
+
+.RS 8
+.TP
+.BR \-o " " \fIOUTPUT\fR ", " \-\-output " " \fIOUTPUT\fR
+Output merged file path (required)
+.TP
+.BR \-f " " \fIFORMAT\fR ", " \-\-format " " \fIFORMAT\fR
+Specify format for all files (default: auto-detect)
+.TP
+.BR \-\-dry\-run
+Preview merge results without creating output file
+.RE
+.TP
+.B diff \fIFILE1\fR \fIFILE2\fR [\-f \fIFORMAT\fR]
+Compare two localization files and show differences in translations,
+added/removed entries, and metadata changes. Useful for reviewing
+translation updates and changes between versions.
+
+.RS 8
+.TP
+.BR \-f " " \fIFORMAT\fR ", " \-\-format " " \fIFORMAT\fR
+Specify format for both files (default: auto-detect)
+.RE
+.TP
+.B init \fITEMPLATE\fR \-l \fILANG\fR \-o \fIOUTPUT\fR [\-f \fIFORMAT\fR] [\-\-dry-run]
+Create a new language-specific translation file from a template.
+Initializes proper locale metadata and prepares the file structure
+for translation work.
+
+.RS 8
+.TP
+.BR \-l " " \fILANG\fR ", " \-\-language " " \fILANG\fR
+Target language code (e.g., 'de', 'fr-CA', 'pt-BR') (required)
+.TP
+.BR \-o " " \fIOUTPUT\fR ", " \-\-output " " \fIOUTPUT\fR
+Output file path (required)
+.TP
+.BR \-f " " \fIFORMAT\fR ", " \-\-format " " \fIFORMAT\fR
+Output format (default: same as template)
+.TP
+.BR \-\-dry\-run
+Preview initialization without creating files
+.RE
 .TP
 .B list-formats
-List all supported input and output formats with descriptions.
-.SH EXAMPLES
-.TP
-Convert PO file to XLIFF:
-.B l10n-conv convert messages.po --to xliff -o messages.xliff
-.TP
-Compile PO to MO:
-.B l10n-conv compile messages.po -o messages.mo
-.TP
-Extract strings from Python source:
-.B l10n-conv extract src/ -o messages.pot
-.TP
-Show statistics with JSON output:
-.B l10n-conv stats messages.po --json
-.SH OPTIONS
-.TP
-.B \-v, \-\-verbose
-Show verbose output with detailed processing information.
-.TP
-.B \-j, \-\-json
-Output results in JSON format for programmatic consumption.
-.TP
-.B \-q, \-\-quiet
-Suppress non-essential output, showing only errors and final results.
-.TP
-.B \-\-about
-Show detailed information about the application, supported formats,
-and feature overview.
-.TP
-.B \-\-dry\-run
-Preview operations without actually writing any files to disk.
-.TP
-.B \-\-batch
-Process directories recursively, handling multiple files automatically.
-.TP
-.B \-\-version
-Show version information and exit.
+Display all supported input and output formats with detailed descriptions,
+file extensions, and feature support matrix. This command provides
+a comprehensive reference for format capabilities.
 .SH EXIT STATUS
 .TP
 .B 0
-Success.
+Operation completed successfully without errors.
 .TP
 .B 1
-Error.
+Fatal error occurred (file not found, invalid format, write error, etc.).
 .TP
 .B 2
-Warnings found.
+Warnings were encountered but operation completed. Issues were found
+during validation or conversion that should be reviewed.
+.SH EXAMPLES
+.TP
+Convert PO file to XLIFF format:
+.B l10n-conv convert messages.po \-\-to xliff \-o messages.xliff
+.TP
+Batch convert all PO files to JSON:
+.B l10n-conv convert po/ \-\-to json \-o json/ \-\-batch
+.TP
+Compile PO to binary MO format:
+.B l10n-conv compile messages.po \-o messages.mo
+.TP
+Extract strings from Python source code:
+.B l10n-conv extract src/ \-o messages.pot
+.TP
+Extract to TS format for Qt projects:
+.B l10n-conv extract qml_src/ \-o translations.ts \-f ts
+.TP
+Validate XLIFF file for issues:
+.B l10n-conv check translations.xliff
+.TP
+Show detailed statistics in JSON format:
+.B l10n-conv stats messages.po \-\-json
+.TP
+Merge updated translations into base file:
+.B l10n-conv merge base.po updates.po \-o merged.po
+.TP
+Compare two translation files:
+.B l10n-conv diff old.po new.po
+.TP
+Initialize German translation from template:
+.B l10n-conv init template.pot \-l de \-o de.po
+.TP
+Preview conversion without writing files:
+.B l10n-conv convert input.ts \-\-to po \-o output.po \-\-dry\-run
+.TP
+List all supported formats:
+.B l10n-conv list\-formats
+.SH SUPPORTED FORMATS
+.B l10n-conv
+supports the following localization formats:
+.RS 4
+.B GNU gettext:
+PO (Portable Object), MO (Machine Object), POT (Template)
+.br
+.B Qt Linguist:
+TS (Translation Source), QM (Qt Message)
+.br
+.B XLIFF:
+XLIFF 1.2, XLIFF 2.0, XLIFF 2.1
+.br
+.B Mobile:
+Android XML, iOS/macOS Strings, iOS Stringsdict
+.br
+.B Web:
+JSON (i18next, FormatJS, Chrome i18n), YAML (Rails i18n)
+.br
+.B Enterprise:
+Java Properties, Microsoft RESX, TBX (TermBase eXchange)
+.br
+.B Modern:
+Mozilla Fluent (FTL), Gettext JavaScript (JED)
+.br
+.B Legacy:
+PHP arrays, Windows RC, CSV
+.RE
+.SH FILES
+.TP
+.B ~/.config/l10n-conv/
+User configuration directory
+.TP
+.B ~/.config/l10n-conv/formats.json
+Custom format definitions
+.TP
+.B ~/.config/l10n-conv/extractors.json
+Custom string extraction rules
 .SH AUTHOR
 Daniel Nylander <daniel@danielnylander.se>
-.SH LICENSE
-GPL-3.0-or-later
+.SH SEE ALSO
+.BR l10n-lint (1),
+.BR po-translate (1),
+.BR po-diff (1),
+.BR msgfmt (1),
+.BR msginit (1),
+.BR msgmerge (1),
+.BR xgettext (1),
+.BR lconvert (1)
+.SH BUGS
+Report bugs at: https://github.com/yeager/l10n-conv/issues
