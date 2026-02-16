@@ -33,19 +33,45 @@ Show differences between two files.
 .TP
 .B init \fITEMPLATE\fR \-l \fILANG\fR \-o \fIOUTPUT\fR
 Create a new language file from a template.
+.TP
+.B list-formats
+List all supported input and output formats with descriptions.
+.SH EXAMPLES
+.TP
+Convert PO file to XLIFF:
+.B l10n-conv convert messages.po --to xliff -o messages.xliff
+.TP
+Compile PO to MO:
+.B l10n-conv compile messages.po -o messages.mo
+.TP
+Extract strings from Python source:
+.B l10n-conv extract src/ -o messages.pot
+.TP
+Show statistics with JSON output:
+.B l10n-conv stats messages.po --json
 .SH OPTIONS
 .TP
 .B \-v, \-\-verbose
-Verbose output.
+Show verbose output with detailed processing information.
+.TP
+.B \-j, \-\-json
+Output results in JSON format for programmatic consumption.
+.TP
+.B \-q, \-\-quiet
+Suppress non-essential output, showing only errors and final results.
+.TP
+.B \-\-about
+Show detailed information about the application, supported formats,
+and feature overview.
 .TP
 .B \-\-dry\-run
-Preview without writing files.
+Preview operations without actually writing any files to disk.
 .TP
 .B \-\-batch
-Process directories recursively.
+Process directories recursively, handling multiple files automatically.
 .TP
 .B \-\-version
-Show version.
+Show version information and exit.
 .SH EXIT STATUS
 .TP
 .B 0
