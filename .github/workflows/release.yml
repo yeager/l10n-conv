@@ -1,0 +1,83 @@
+name: Build .deb
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-deb:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get version
+        id: version
+        run: echo "version=$(grep -oP '__version__\s*=\s*\"\K[^\"]+' src/l10n_conv/__init__.py)" >> $GITHUB_OUTPUT
+
+      - name: Build .deb
+        run: |
+          PKG=l10n-conv
+          VER=${{ steps.version.outputs.version }}
+          ROOT=pkg-deb/${PKG}_${VER}-1_all
+          mkdir -p ${ROOT}/DEBIAN
+          mkdir -p ${ROOT}/usr/bin
+          mkdir -p ${ROOT}/usr/lib/python3/dist-packages
+          mkdir -p ${ROOT}/usr/share/man/man1
+
+          # Install Python package
+          cp -r src/l10n_conv ${ROOT}/usr/lib/python3/dist-packages/
+          cat > ${ROOT}/usr/bin/${PKG} << 'WRAPPER'
+          #!/usr/bin/python3
+          from l10n_conv.cli import main
+          main()
+          WRAPPER
+          chmod 755 ${ROOT}/usr/bin/${PKG}
+
+          # English man page
+          if [ -f data/man/${PKG}.1 ]; then
+            gzip -9cn data/man/${PKG}.1 > ${ROOT}/usr/share/man/man1/${PKG}.1.gz
+          elif [ -f man/${PKG}.1 ]; then
+            gzip -9cn man/${PKG}.1 > ${ROOT}/usr/share/man/man1/${PKG}.1.gz
+          fi
+
+          # Translated man pages
+          for langdir in man/*/; do
+            [ -d "$langdir" ] || continue
+            lang=$(basename "$langdir")
+            [ "$lang" = "en" ] && continue
+            for manfile in "$langdir"*.1; do
+              [ -f "$manfile" ] || continue
+              mkdir -p ${ROOT}/usr/share/man/${lang}/man1
+              gzip -9cn "$manfile" > ${ROOT}/usr/share/man/${lang}/man1/$(basename "$manfile").gz
+            done
+          done
+
+          cat > ${ROOT}/DEBIAN/control << EOF
+          Package: ${PKG}
+          Version: ${VER}-1
+          Architecture: all
+          Maintainer: Daniel Nylander <daniel@danielnylander.se>
+          Depends: python3 (>= 3.9)
+          Section: devel
+          Priority: optional
+          Homepage: https://github.com/yeager/${PKG}
+          Description: Convert between localization file formats
+           l10n-conv converts between gettext PO, Qt TS, XLIFF, JSON,
+           Android XML, iOS Strings, and other localization formats.
+          EOF
+          sed -i 's/^          //' ${ROOT}/DEBIAN/control
+
+          dpkg-deb --build --root-owner-group ${ROOT}
+          mv pkg-deb/*.deb .
+
+      - name: Upload .deb to release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          VER=${{ steps.version.outputs.version }}
+          gh release upload "v${VER}" l10n-conv_${VER}-1_all.deb --clobber 2>/dev/null || \
+          gh release upload "${GITHUB_REF_NAME}" l10n-conv_${VER}-1_all.deb --clobber
