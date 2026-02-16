@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: l 10n-conv\n"
-"POT-Creation-Date: 2026-02-15 15:39+0100\n"
+"POT-Creation-Date: 2026-02-16 11:43+0000\n"
 "PO-Revision-Date: 2026-02-15 15:39+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -25,19 +25,19 @@ msgstr ""
 #. type: TH
 #: data/man/l10n-conv.1:1
 #, no-wrap
-msgid "2026-02-15"
+msgid "February 2026"
 msgstr ""
 
 #. type: TH
 #: data/man/l10n-conv.1:1
 #, no-wrap
-msgid "Daniel Nylander"
+msgid "l10n-conv 1.0.4"
 msgstr ""
 
 #. type: TH
 #: data/man/l10n-conv.1:1
 #, no-wrap
-msgid "l10n-conv Manual"
+msgid "User Commands"
 msgstr ""
 
 #. type: SH
@@ -49,7 +49,7 @@ msgstr ""
 #. type: Plain text
 #: data/man/l10n-conv.1:4
 msgid ""
-"l10n-conv - Universal localization file converter, validator, and compiler"
+"l10n-conv - universal localization file converter, validator, and compiler"
 msgstr ""
 
 #. type: SH
@@ -59,12 +59,13 @@ msgid "SYNOPSIS"
 msgstr ""
 
 #. type: Plain text
-#: data/man/l10n-conv.1:9
-msgid "B<l10n-conv> [I<OPTIONS>] I<COMMAND> [I<ARGS>]"
+#: data/man/l10n-conv.1:7
+msgid ""
+"B<l10n-conv> [I<GLOBAL-OPTIONS>] I<COMMAND> [I<COMMAND-OPTIONS>] [I<ARGS>]"
 msgstr ""
 
 #. type: SH
-#: data/man/l10n-conv.1:9
+#: data/man/l10n-conv.1:7
 #, no-wrap
 msgid "DESCRIPTION"
 msgstr ""
@@ -72,408 +73,512 @@ msgstr ""
 #. type: Plain text
 #: data/man/l10n-conv.1:11
 msgid ""
-"B<l10n-conv> is a universal localization file converter, validator, and "
-"compiler supporting 16+ formats including Gettext PO/MO, Qt TS, XLIFF, Java "
-"Properties, Android XML, iOS Strings, JSON, YAML, CSV/TSV, TMX, TBX, PHP, "
-"ARB, Fluent, and Windows RESX."
-msgstr ""
-
-#. type: SH
-#: data/man/l10n-conv.1:11
-#, no-wrap
-msgid "OPTIONS"
-msgstr ""
-
-#. type: TP
-#: data/man/l10n-conv.1:12
-#, no-wrap
-msgid "B<--version>"
+"B<l10n-conv> converts between different localization file formats, validates "
+"translation files, compiles them to binary formats, extracts translatable "
+"strings from source code, and shows translation statistics."
 msgstr ""
 
 #. type: Plain text
 #: data/man/l10n-conv.1:15
-msgid "Show version number and exit."
-msgstr ""
-
-#. type: TP
-#: data/man/l10n-conv.1:15
-#, no-wrap
-msgid "B<-v>, B<--verbose>"
+msgid ""
+"Supported formats include PO (gettext), XLIFF, TS (Qt), JSON, YAML, ARB "
+"(Flutter/Dart), Properties (Java), Strings (Apple), Android XML, and more."
 msgstr ""
 
 #. type: Plain text
 #: data/man/l10n-conv.1:18
-msgid "Verbose output."
-msgstr ""
-
-#. type: TP
-#: data/man/l10n-conv.1:18
-#, no-wrap
-msgid "B<--about>"
-msgstr ""
-
-#. type: Plain text
-#: data/man/l10n-conv.1:21
-msgid "Show application info and exit."
+msgid ""
+"Format auto-detection is used when possible; use B<-f>/B<--format> to "
+"override."
 msgstr ""
 
 #. type: SH
-#: data/man/l10n-conv.1:21
+#: data/man/l10n-conv.1:18
 #, no-wrap
-msgid "COMMANDS"
+msgid "GLOBAL OPTIONS"
+msgstr ""
+
+#. type: TP
+#: data/man/l10n-conv.1:19
+#, no-wrap
+msgid "B<-j>, B<--json>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:22
+msgid "Output results as JSON for all commands."
 msgstr ""
 
 #. type: TP
 #: data/man/l10n-conv.1:22
 #, no-wrap
-msgid "B<convert>"
+msgid "B<-q>, B<--quiet>"
 msgstr ""
 
 #. type: Plain text
 #: data/man/l10n-conv.1:25
-msgid "Convert between localization file formats."
+msgid "Suppress non-essential output. Only errors are shown."
 msgstr ""
 
 #. type: TP
-#: data/man/l10n-conv.1:26 data/man/l10n-conv.1:49
+#: data/man/l10n-conv.1:25
+#, no-wrap
+msgid "B<-v>, B<--verbose>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:28
+msgid "Verbose output with progress details."
+msgstr ""
+
+#. type: TP
+#: data/man/l10n-conv.1:28
+#, no-wrap
+msgid "B<--about>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:31
+msgid "Show application info (name, version, author, license) and exit."
+msgstr ""
+
+#. type: TP
+#: data/man/l10n-conv.1:31
+#, no-wrap
+msgid "B<--version>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:34
+msgid "Show version number and exit."
+msgstr ""
+
+#. type: SH
+#: data/man/l10n-conv.1:34
+#, no-wrap
+msgid "COMMANDS"
+msgstr ""
+
+#. type: SS
+#: data/man/l10n-conv.1:35
+#, no-wrap
+msgid "convert"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:37
+msgid "Convert between localization file formats."
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:40
+msgid "B<l10n-conv convert> I<INPUT> [I<OPTIONS>]"
+msgstr ""
+
+#. type: TP
+#: data/man/l10n-conv.1:40 data/man/l10n-conv.1:74
 #, no-wrap
 msgid "I<INPUT>"
 msgstr ""
 
 #. type: Plain text
-#: data/man/l10n-conv.1:29 data/man/l10n-conv.1:52
-msgid "Input file path."
+#: data/man/l10n-conv.1:43
+msgid "Input file path, or B<-> for stdin."
 msgstr ""
 
 #. type: TP
-#: data/man/l10n-conv.1:29 data/man/l10n-conv.1:77
+#: data/man/l10n-conv.1:43 data/man/l10n-conv.1:101 data/man/l10n-conv.1:122
+#: data/man/l10n-conv.1:141 data/man/l10n-conv.1:162
 #, no-wrap
-msgid "B<-f>, B<--format> I<FMT>"
+msgid "B<-f>, B<--format> I<FORMAT>"
 msgstr ""
 
 #. type: Plain text
-#: data/man/l10n-conv.1:32
-msgid "Input format."
+#: data/man/l10n-conv.1:47
+msgid ""
+"Input format. Auto-detected from file extension if omitted. Required when "
+"reading from stdin."
 msgstr ""
 
 #. type: TP
-#: data/man/l10n-conv.1:32
+#: data/man/l10n-conv.1:47
 #, no-wrap
-msgid "B<--to> I<FMT>"
+msgid "B<--to> I<FORMAT>"
 msgstr ""
 
 #. type: Plain text
-#: data/man/l10n-conv.1:35
-msgid "Output format."
+#: data/man/l10n-conv.1:51
+msgid ""
+"Output format. Required unless B<-o> specifies a file with a recognizable "
+"extension."
 msgstr ""
 
 #. type: TP
-#: data/man/l10n-conv.1:35 data/man/l10n-conv.1:52 data/man/l10n-conv.1:66
-#: data/man/l10n-conv.1:99 data/man/l10n-conv.1:127
+#: data/man/l10n-conv.1:51 data/man/l10n-conv.1:77 data/man/l10n-conv.1:98
 #, no-wrap
 msgid "B<-o>, B<--output> I<FILE>"
 msgstr ""
 
 #. type: Plain text
-#: data/man/l10n-conv.1:38
-msgid "Output file (- for stdout)."
+#: data/man/l10n-conv.1:54
+msgid "Output file. Use B<-> for stdout."
 msgstr ""
 
 #. type: TP
-#: data/man/l10n-conv.1:38 data/man/l10n-conv.1:55 data/man/l10n-conv.1:102
+#: data/man/l10n-conv.1:54 data/man/l10n-conv.1:80 data/man/l10n-conv.1:104
 #, no-wrap
 msgid "B<--dry-run>"
 msgstr ""
 
 #. type: Plain text
-#: data/man/l10n-conv.1:41 data/man/l10n-conv.1:58 data/man/l10n-conv.1:105
-msgid "Show what would be done."
+#: data/man/l10n-conv.1:57
+msgid "Show what would be done without writing files."
 msgstr ""
 
 #. type: TP
-#: data/man/l10n-conv.1:41
+#: data/man/l10n-conv.1:57
 #, no-wrap
 msgid "B<--batch>"
 msgstr ""
 
 #. type: Plain text
-#: data/man/l10n-conv.1:44
-msgid "Process directory recursively."
+#: data/man/l10n-conv.1:60
+msgid "Process all files in a directory recursively."
 msgstr ""
 
-#. type: TP
-#: data/man/l10n-conv.1:45
+#. type: Plain text
+#: data/man/l10n-conv.1:62 data/man/l10n-conv.1:85 data/man/l10n-conv.1:109
+#: data/man/l10n-conv.1:127 data/man/l10n-conv.1:148 data/man/l10n-conv.1:167
+#: data/man/l10n-conv.1:178
+msgid "Example:"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:67
 #, no-wrap
-msgid "B<compile>"
+msgid ""
+"l10n-conv convert messages.po --to xliff -o messages.xlf\n"
+"l10n-conv convert -f po --to json -o strings.json E<lt> input.po\n"
+"l10n-conv convert translations/ --to po -o output/ --batch\n"
 msgstr ""
 
-#. type: Plain text
-#: data/man/l10n-conv.1:48
-msgid "Compile translation files (e.g., PO to MO)."
-msgstr ""
-
-#. type: Plain text
-#: data/man/l10n-conv.1:55 data/man/l10n-conv.1:69
-msgid "Output file (required)."
-msgstr ""
-
-#. type: TP
-#: data/man/l10n-conv.1:59
+#. type: SS
+#: data/man/l10n-conv.1:69
 #, no-wrap
-msgid "B<extract>"
+msgid "compile"
 msgstr ""
 
 #. type: Plain text
-#: data/man/l10n-conv.1:62
-msgid "Extract translatable strings from source code."
+#: data/man/l10n-conv.1:71
+msgid ""
+"Compile localization files to binary formats (.po\\[u2192].mo, .ts\\[u2192]."
+"qm)."
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:74
+msgid "B<l10n-conv compile> I<INPUT> B<-o> I<OUTPUT>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:77
+msgid "Input file to compile."
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:80
+msgid "Output file path. Required."
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:83
+msgid "Show what would be done without writing."
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:88
+#, no-wrap
+msgid "l10n-conv compile po/sv.po -o locale/sv/LC_MESSAGES/app.mo\n"
+msgstr ""
+
+#. type: SS
+#: data/man/l10n-conv.1:90
+#, no-wrap
+msgid "extract"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:92
+msgid "Extract translatable strings from source code files."
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:95
+msgid "B<l10n-conv extract> I<SOURCE_DIR> B<-o> I<OUTPUT> [I<OPTIONS>]"
 msgstr ""
 
 #. type: TP
-#: data/man/l10n-conv.1:63
+#: data/man/l10n-conv.1:95
 #, no-wrap
 msgid "I<SOURCE_DIR>"
 msgstr ""
 
 #. type: Plain text
-#: data/man/l10n-conv.1:66
-msgid "Source directory."
-msgstr ""
-
-#. type: TP
-#: data/man/l10n-conv.1:70
-#, no-wrap
-msgid "B<check>"
+#: data/man/l10n-conv.1:98
+msgid "Directory containing source code to scan."
 msgstr ""
 
 #. type: Plain text
-#: data/man/l10n-conv.1:73
-msgid "Validate a translation file."
+#: data/man/l10n-conv.1:101
+msgid "Output file for extracted strings. Required."
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:104
+msgid "Output format. Default: po."
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:107
+msgid "Show what would be extracted without writing."
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:112
+#, no-wrap
+msgid "l10n-conv extract src/ -o po/messages.pot\n"
+msgstr ""
+
+#. type: SS
+#: data/man/l10n-conv.1:114
+#, no-wrap
+msgid "check"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:116
+msgid "Validate a localization file for errors and consistency."
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:119
+msgid "B<l10n-conv check> I<FILE> [B<-f> I<FORMAT>]"
 msgstr ""
 
 #. type: TP
-#: data/man/l10n-conv.1:74 data/man/l10n-conv.1:85
+#: data/man/l10n-conv.1:119 data/man/l10n-conv.1:138
 #, no-wrap
 msgid "I<FILE>"
 msgstr ""
 
 #. type: Plain text
-#: data/man/l10n-conv.1:77
-msgid "File to check."
+#: data/man/l10n-conv.1:122
+msgid "File to validate."
 msgstr ""
 
 #. type: Plain text
-#: data/man/l10n-conv.1:80
-msgid "File format."
+#: data/man/l10n-conv.1:125 data/man/l10n-conv.1:144 data/man/l10n-conv.1:165
+msgid "File format (auto-detected if omitted)."
 msgstr ""
 
-#. type: TP
-#: data/man/l10n-conv.1:81
+#. type: Plain text
+#: data/man/l10n-conv.1:131
 #, no-wrap
-msgid "B<stats>"
+msgid ""
+"l10n-conv check po/sv.po\n"
+"l10n-conv check strings.json -f json\n"
+msgstr ""
+
+#. type: SS
+#: data/man/l10n-conv.1:133
+#, no-wrap
+msgid "stats"
 msgstr ""
 
 #. type: Plain text
-#: data/man/l10n-conv.1:84
-msgid "Show statistics for a translation file."
+#: data/man/l10n-conv.1:135
+msgid "Show translation statistics for a localization file."
 msgstr ""
 
 #. type: Plain text
-#: data/man/l10n-conv.1:88
+#: data/man/l10n-conv.1:138
+msgid "B<l10n-conv stats> I<FILE> [B<-f> I<FORMAT>]"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:141
 msgid "File to analyze."
 msgstr ""
 
-#. type: TP
-#: data/man/l10n-conv.1:89
-#, no-wrap
-msgid "B<merge>"
+#. type: Plain text
+#: data/man/l10n-conv.1:146
+msgid ""
+"Shows: total entries, translated, untranslated, fuzzy, completion percentage."
 msgstr ""
 
 #. type: Plain text
-#: data/man/l10n-conv.1:92
-msgid "Merge two translation files."
-msgstr ""
-
-#. type: TP
-#: data/man/l10n-conv.1:93
-#, no-wrap
-msgid "I<BASE>"
-msgstr ""
-
-#. type: Plain text
-#: data/man/l10n-conv.1:96
-msgid "Base file."
-msgstr ""
-
-#. type: TP
-#: data/man/l10n-conv.1:96
-#, no-wrap
-msgid "I<UPDATE>"
-msgstr ""
-
-#. type: Plain text
-#: data/man/l10n-conv.1:99
-msgid "Update file."
-msgstr ""
-
-#. type: Plain text
-#: data/man/l10n-conv.1:102 data/man/l10n-conv.1:130
-msgid "Output file."
-msgstr ""
-
-#. type: TP
-#: data/man/l10n-conv.1:106
-#, no-wrap
-msgid "B<diff>"
-msgstr ""
-
-#. type: Plain text
-#: data/man/l10n-conv.1:109
-msgid "Compare two translation files."
-msgstr ""
-
-#. type: TP
-#: data/man/l10n-conv.1:110
-#, no-wrap
-msgid "I<FILE1>"
-msgstr ""
-
-#. type: Plain text
-#: data/man/l10n-conv.1:113
-msgid "First file."
-msgstr ""
-
-#. type: TP
-#: data/man/l10n-conv.1:113
-#, no-wrap
-msgid "I<FILE2>"
-msgstr ""
-
-#. type: Plain text
-#: data/man/l10n-conv.1:116
-msgid "Second file."
-msgstr ""
-
-#. type: TP
-#: data/man/l10n-conv.1:117
-#, no-wrap
-msgid "B<init>"
-msgstr ""
-
-#. type: Plain text
-#: data/man/l10n-conv.1:120
-msgid "Create a new translation file from a template."
-msgstr ""
-
-#. type: TP
-#: data/man/l10n-conv.1:121
-#, no-wrap
-msgid "I<TEMPLATE>"
-msgstr ""
-
-#. type: Plain text
-#: data/man/l10n-conv.1:124
-msgid "Template file."
-msgstr ""
-
-#. type: TP
-#: data/man/l10n-conv.1:124
-#, no-wrap
-msgid "I<LANG>"
-msgstr ""
-
-#. type: Plain text
-#: data/man/l10n-conv.1:127
-msgid "Target language code."
-msgstr ""
-
-#. type: TP
-#: data/man/l10n-conv.1:131
-#, no-wrap
-msgid "B<formats>"
-msgstr ""
-
-#. type: Plain text
-#: data/man/l10n-conv.1:134
-msgid "List all supported formats."
-msgstr ""
-
-#. type: SH
-#: data/man/l10n-conv.1:134
-#, no-wrap
-msgid "EXAMPLES"
-msgstr ""
-
-#. type: Plain text
-#: data/man/l10n-conv.1:144
+#: data/man/l10n-conv.1:152
 #, no-wrap
 msgid ""
-"l10n-conv convert messages.po --to json -o messages.json\n"
-"l10n-conv compile messages.po -o messages.mo\n"
-"l10n-conv check translations.xliff\n"
-"l10n-conv stats messages.po\n"
-"l10n-conv merge base.po update.po -o merged.po\n"
-"l10n-conv diff old.po new.po\n"
-"l10n-conv init template.pot sv -o sv.po\n"
+"l10n-conv stats po/sv.po\n"
+"  Total: 245, Translated: 230 (93.9%), Fuzzy: 5, Untranslated: 10\n"
+msgstr ""
+
+#. type: SS
+#: data/man/l10n-conv.1:154
+#, no-wrap
+msgid "diff"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:156
+msgid "Compare two localization files and show differences."
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:159
+msgid "B<l10n-conv diff> I<FILE1> I<FILE2> [B<-f> I<FORMAT>]"
+msgstr ""
+
+#. type: TP
+#: data/man/l10n-conv.1:159
+#, no-wrap
+msgid "I<FILE1>, I<FILE2>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:162
+msgid "Files to compare."
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:170
+#, no-wrap
+msgid "l10n-conv diff old.po new.po\n"
+msgstr ""
+
+#. type: SS
+#: data/man/l10n-conv.1:172
+#, no-wrap
+msgid "formats"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:174
+msgid "List all supported file formats and their extensions."
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:176
+msgid "B<l10n-conv formats>"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:186
+#, no-wrap
+msgid ""
 "l10n-conv formats\n"
+"  po      .po, .pot       GNU gettext\n"
+"  xliff   .xlf, .xliff    XLIFF 1.2/2.0\n"
+"  ts      .ts             Qt Linguist\n"
+"  json    .json           JSON (i18next, Chrome)\n"
+"  ...\n"
 msgstr ""
 
 #. type: SH
-#: data/man/l10n-conv.1:145
+#: data/man/l10n-conv.1:188
 #, no-wrap
-msgid "FILES"
+msgid "SUPPORTED FORMATS"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:192
+msgid ""
+"PO/POT (GNU gettext), XLIFF 1.2/2.0, TS (Qt Linguist), JSON (i18next, Chrome "
+"extensions), YAML, ARB (Flutter/Dart), Properties (Java), Strings/"
+"Stringsdict (Apple iOS/macOS), Android XML, PHP arrays, CSV."
+msgstr ""
+
+#. type: SH
+#: data/man/l10n-conv.1:192
+#, no-wrap
+msgid "EXIT STATUS"
 msgstr ""
 
 #. type: TP
-#: data/man/l10n-conv.1:146
+#: data/man/l10n-conv.1:193
 #, no-wrap
-msgid "I<~/.config/l10n-conv/>"
+msgid "B<0>"
 msgstr ""
 
 #. type: Plain text
-#: data/man/l10n-conv.1:149
-msgid "Configuration files."
+#: data/man/l10n-conv.1:196
+msgid "Success (conversion completed, file valid, no differences)."
 msgstr ""
 
 #. type: TP
-#: data/man/l10n-conv.1:149
+#: data/man/l10n-conv.1:196
 #, no-wrap
-msgid "I<~/.cache/l10n-conv/>"
+msgid "B<1>"
 msgstr ""
 
 #. type: Plain text
-#: data/man/l10n-conv.1:152
-msgid "Cached data."
+#: data/man/l10n-conv.1:199
+msgid ""
+"Errors found (validation failures, conversion errors, differences found)."
 msgstr ""
 
-#. type: SH
-#: data/man/l10n-conv.1:152
+#. type: TP
+#: data/man/l10n-conv.1:199
 #, no-wrap
-msgid "BUGS"
+msgid "B<2>"
 msgstr ""
 
 #. type: Plain text
-#: data/man/l10n-conv.1:154
-msgid "Report bugs at https://github.com/yeager/l10n-conv/issues"
+#: data/man/l10n-conv.1:202
+msgid "Usage error (unknown format, file not found, missing required options)."
 msgstr ""
 
 #. type: SH
-#: data/man/l10n-conv.1:154
-#, no-wrap
-msgid "AUTHOR"
-msgstr ""
-
-#. type: Plain text
-#: data/man/l10n-conv.1:156
-msgid "Daniel Nylander E<lt>daniel@danielnylander.seE<gt>"
-msgstr ""
-
-#. type: SH
-#: data/man/l10n-conv.1:156
+#: data/man/l10n-conv.1:202
 #, no-wrap
 msgid "SEE ALSO"
 msgstr ""
 
 #. type: Plain text
-#: data/man/l10n-conv.1:157
-msgid "Project homepage: https://github.com/yeager/l10n-conv"
+#: data/man/l10n-conv.1:207
+msgid "B<l10n-lint>(1), B<po-translate>(1), B<msgfmt>(1), B<msgunfmt>(1)"
+msgstr ""
+
+#. type: SH
+#: data/man/l10n-conv.1:207
+#, no-wrap
+msgid "AUTHOR"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:209
+msgid "Daniel Nylander E<lt>daniel@danielnylander.seE<gt>"
+msgstr ""
+
+#. type: SH
+#: data/man/l10n-conv.1:209
+#, no-wrap
+msgid "BUGS"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:211
+msgid "Report bugs at: https://github.com/yeager/l10n-conv/issues"
+msgstr ""
+
+#. type: SH
+#: data/man/l10n-conv.1:211
+#, no-wrap
+msgid "COPYRIGHT"
+msgstr ""
+
+#. type: Plain text
+#: data/man/l10n-conv.1:212
+msgid "Copyright \\(co 2026 Daniel Nylander. License: GPL-3.0-or-later."
 msgstr ""
