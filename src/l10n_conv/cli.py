@@ -23,6 +23,8 @@ try:
     locale.textdomain(TEXTDOMAIN)
 except AttributeError:
     pass
+gettext.bindtextdomain(TEXTDOMAIN, LOCALEDIR)
+gettext.textdomain(TEXTDOMAIN)
 _ = gettext.gettext
 
 console = Console(stderr=True)
