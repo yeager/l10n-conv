@@ -1,5 +1,7 @@
 # l10n-conv
 
+[![Version](https://img.shields.io/badge/version-1.0.5-blue)](https://github.com/yeager/l10n-conv/releases)
+
 Universal localization file converter, validator, and compiler — **lupdate + lrelease for all l10n formats**.
 
 ## Installation
