@@ -321,3 +321,9 @@ msgstr "Saknat alternativ '%s'."
 
 msgid "Error: Missing command."
 msgstr "Fel: Kommando saknas."
+
+msgid "Options"
+msgstr "Alternativ"
+
+msgid "Commands"
+msgstr "Kommandon"
