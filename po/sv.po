@@ -296,7 +296,7 @@ msgid "Usage:"
 msgstr "Användning:"
 
 msgid "Options:"
-msgstr "Alternativ:"
+msgstr "Flaggor:"
 
 msgid "Commands:"
 msgstr "Kommandon:"
@@ -323,7 +323,7 @@ msgid "Error: Missing command."
 msgstr "Fel: Kommando saknas."
 
 msgid "Options"
-msgstr "Alternativ"
+msgstr "Flaggor"
 
 msgid "Commands"
 msgstr "Kommandon"
