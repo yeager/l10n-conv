@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.5] - 2026-02-18
+
+### Fixed
+- Remove build artifacts from git repository
+- Add .gitignore for deb/rpm artifacts
+- Add Transifex translation notice
+
 ## [1.0.0] - 2026-02-14
 
 ### Added
