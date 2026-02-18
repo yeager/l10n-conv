@@ -85,7 +85,7 @@ def _show_about(ctx, param, value):
     ctx.exit()
 
 
-@click.group()
+@click.group(help=_("l10n-conv — Universal localization file converter, validator, and compiler."))
 @click.version_option(__version__, prog_name="l10n-conv")
 @click.option("--about", is_flag=True, callback=_show_about, expose_value=False, is_eager=True, help=_("Show application info and exit"))
 @click.option("-v", "--verbose", is_flag=True, help=_("Verbose output"))
@@ -100,7 +100,7 @@ def main(ctx, verbose, json_output, quiet):
     ctx.obj["quiet"] = quiet
 
 
-@main.command()
+@main.command(help=_("Convert between localization formats."))
 @click.argument("input", type=str)
 @click.option("-f", "--format", "in_fmt", help=_("Input format"))
 @click.option("--to", "out_fmt", help=_("Output format"))
@@ -155,7 +155,7 @@ def _get_ext_map():
     return _EXT_MAP
 
 
-@main.command()
+@main.command(help=_("Compile localization files (.po→.mo, .ts→.qm)."))
 @click.argument("input", type=str)
 @click.option("-o", "--output", required=True, help=_("Output file"))
 @click.option("--dry-run", is_flag=True)
@@ -186,7 +186,7 @@ def compile(ctx, input, output, dry_run):
         sys.exit(1)
 
 
-@main.command()
+@main.command(help=_("Extract translatable strings from source code."))
 @click.argument("source_dir", type=click.Path(exists=True))
 @click.option("-o", "--output", required=True, help=_("Output file"))
 @click.option("-f", "--format", "out_fmt", default="po", help=_("Output format (default: po)"))
@@ -206,7 +206,7 @@ def extract(ctx, source_dir, output, out_fmt, dry_run):
     console.print(f"[green]✓[/green] {_('Extracted {count} strings → {dst}').format(count=len(catalog.entries), dst=output)}")
 
 
-@main.command()
+@main.command(help=_("Validate a localization file."))
 @click.argument("file", type=str)
 @click.option("-f", "--format", "fmt", help=_("File format"))
 @click.pass_context
@@ -252,7 +252,7 @@ def check(ctx, file, fmt):
     sys.exit(2 if errors else (1 if warnings else 0))
 
 
-@main.command()
+@main.command(help=_("Show translation statistics."))
 @click.argument("file", type=str)
 @click.option("-f", "--format", "fmt", help=_("File format"))
 @click.pass_context
@@ -290,7 +290,7 @@ def stats(ctx, file, fmt):
         out_console.print(table)
 
 
-@main.command()
+@main.command(help=_("Merge two localization files (like msgmerge)."))
 @click.argument("base", type=str)
 @click.argument("update", type=str)
 @click.option("-o", "--output", required=True, help=_("Output file"))
@@ -325,7 +325,7 @@ def merge(ctx, base, update, output, fmt, dry_run):
     console.print(f"[green]✓[/green] {_('Merged {count} translations → {dst}').format(count=merged, dst=output)}")
 
 
-@main.command()
+@main.command(help=_("Show differences between two localization files."))
 @click.argument("file1", type=str)
 @click.argument("file2", type=str)
 @click.option("-f", "--format", "fmt", help=_("File format"))
@@ -375,7 +375,7 @@ def diff(ctx, file1, file2, fmt):
         console.print(f"\n{_('{added} added, {removed} removed, {changed} changed').format(added=added, removed=removed, changed=changed)}")
 
 
-@main.command()
+@main.command(help=_("Create a new language file from a template."))
 @click.argument("template", type=str)
 @click.option("-l", "--lang", required=True, help=_("Target language code"))
 @click.option("-o", "--output", required=True, help=_("Output file"))
@@ -400,7 +400,7 @@ def init(ctx, template, lang, output, fmt, dry_run):
     console.print(f"[green]✓[/green] {_('Created {dst} for language {lang} with {count} entries').format(dst=output, lang=lang, count=len(catalog.entries))}")
 
 
-@main.command(name="formats")
+@main.command(name="formats", help=_("List all supported formats."))
 @click.pass_context
 def list_formats_cmd(ctx):
     """List all supported formats."""
