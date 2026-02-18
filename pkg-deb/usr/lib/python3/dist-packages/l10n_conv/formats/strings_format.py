@@ -13,7 +13,6 @@ from .base import BaseFormat
 class StringsFormat(BaseFormat):
     def read(self, filepath: str) -> TranslationCatalog:
         catalog = TranslationCatalog()
-        comment_buf = []
 
         with open(filepath, "r", encoding="utf-8") as f:
             content = f.read()

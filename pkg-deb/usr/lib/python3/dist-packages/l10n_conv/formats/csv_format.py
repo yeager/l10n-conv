@@ -16,7 +16,7 @@ class _CsvBase(BaseFormat):
         catalog = TranslationCatalog()
         with open(filepath, "r", encoding="utf-8", newline="") as f:
             reader = csv.reader(f, delimiter=self.delimiter)
-            header = next(reader, None)
+            next(reader, None)  # skip header
             # Expect: key, source, target [, comment, context]
             for row in reader:
                 if not row:

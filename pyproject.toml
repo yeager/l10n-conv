@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "l10n-conv"
-version = "1.0.8"
+version = "1.0.9"
 description = "Universal localization file converter, validator, and compiler — lupdate + lrelease for all l10n formats"
 readme = "README.md"
 license = "GPL-3.0-or-later"

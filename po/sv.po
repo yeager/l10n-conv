@@ -291,3 +291,33 @@ msgstr "Skapade {dst} för språket {lang} med {count} poster"
 #: src/l10n_conv/cli.py:403
 msgid "List all supported formats."
 msgstr "Lista alla format som stöds."
+
+msgid "Usage:"
+msgstr "Användning:"
+
+msgid "Options:"
+msgstr "Alternativ:"
+
+msgid "Commands:"
+msgstr "Kommandon:"
+
+msgid "Show this message and exit."
+msgstr "Visa detta meddelande och avsluta."
+
+msgid "Show the version and exit."
+msgstr "Visa versionen och avsluta."
+
+msgid "Error:"
+msgstr "Fel:"
+
+msgid "No such command '%s'."
+msgstr "Inget sådant kommando '%s'."
+
+msgid "Missing argument '%s'."
+msgstr "Saknat argument '%s'."
+
+msgid "Missing option '%s'."
+msgstr "Saknat alternativ '%s'."
+
+msgid "Error: Missing command."
+msgstr "Fel: Kommando saknas."
