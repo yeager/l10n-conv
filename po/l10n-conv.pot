@@ -1,0 +1,243 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-02-18 10:16+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/l10n_conv/cli.py:36
+msgid "Format must be specified when reading from stdin (-f/--format)"
+msgstr ""
+
+#: src/l10n_conv/cli.py:43
+#, python-brace-format
+msgid "Cannot detect format of {path}. Use -f/--format."
+msgstr ""
+
+#: src/l10n_conv/cli.py:69
+#, python-brace-format
+msgid "Skipping {path}: {error}"
+msgstr ""
+
+#: src/l10n_conv/cli.py:76
+msgid "Universal localization file converter, validator, and compiler"
+msgstr ""
+
+#: src/l10n_conv/cli.py:78
+msgid "Author"
+msgstr ""
+
+#: src/l10n_conv/cli.py:79
+msgid "License"
+msgstr ""
+
+#: src/l10n_conv/cli.py:80
+msgid "Website"
+msgstr ""
+
+#: src/l10n_conv/cli.py:81
+msgid "PyPI"
+msgstr ""
+
+#: src/l10n_conv/cli.py:82
+msgid "Translate"
+msgstr ""
+
+#: src/l10n_conv/cli.py:88
+msgid "Show application info and exit"
+msgstr ""
+
+#: src/l10n_conv/cli.py:89
+msgid "Verbose output"
+msgstr ""
+
+#: src/l10n_conv/cli.py:90
+msgid "JSON output"
+msgstr ""
+
+#: src/l10n_conv/cli.py:91
+msgid "Suppress non-essential output (only errors)"
+msgstr ""
+
+#: src/l10n_conv/cli.py:103
+msgid "Input format"
+msgstr ""
+
+#: src/l10n_conv/cli.py:104
+msgid "Output format"
+msgstr ""
+
+#: src/l10n_conv/cli.py:105
+msgid "Output file (- for stdout)"
+msgstr ""
+
+#: src/l10n_conv/cli.py:106
+msgid "Show what would be done"
+msgstr ""
+
+#: src/l10n_conv/cli.py:107
+msgid "Process directory recursively"
+msgstr ""
+
+#: src/l10n_conv/cli.py:112
+msgid "Specify --to <format> or -o <output>"
+msgstr ""
+
+#: src/l10n_conv/cli.py:117
+#, python-brace-format
+msgid "Cannot detect output format from {path}. Use --to."
+msgstr ""
+
+#: src/l10n_conv/cli.py:131
+#, python-brace-format
+msgid "Would convert {src} → {dst}"
+msgstr ""
+
+#: src/l10n_conv/cli.py:142
+#, python-brace-format
+msgid "Would convert {src} ({fmt_in}) → {dst} ({fmt_out})"
+msgstr ""
+
+#: src/l10n_conv/cli.py:143
+msgid "entries"
+msgstr ""
+
+#: src/l10n_conv/cli.py:148
+#, python-brace-format
+msgid "Converted {count} entries from {src} to {dst}"
+msgstr ""
+
+#: src/l10n_conv/cli.py:158 src/l10n_conv/cli.py:189 src/l10n_conv/cli.py:294
+#: src/l10n_conv/cli.py:379
+msgid "Output file"
+msgstr ""
+
+#: src/l10n_conv/cli.py:166
+#, python-brace-format
+msgid "Would compile {src} → {dst} (PO→MO)"
+msgstr ""
+
+#: src/l10n_conv/cli.py:170 src/l10n_conv/cli.py:178
+#, python-brace-format
+msgid "Compiled {src} → {dst}"
+msgstr ""
+
+#: src/l10n_conv/cli.py:173
+#, python-brace-format
+msgid "Would compile {src} → {dst} (TS→QM)"
+msgstr ""
+
+#: src/l10n_conv/cli.py:180
+msgid "lrelease not found. Install Qt tools for .ts→.qm compilation."
+msgstr ""
+
+#: src/l10n_conv/cli.py:183
+#, python-brace-format
+msgid "Compilation not supported for format: {fmt}"
+msgstr ""
+
+#: src/l10n_conv/cli.py:190
+msgid "Output format (default: po)"
+msgstr ""
+
+#: src/l10n_conv/cli.py:200
+#, python-brace-format
+msgid "Would extract {count} strings → {dst}"
+msgstr ""
+
+#: src/l10n_conv/cli.py:204
+#, python-brace-format
+msgid "Extracted {count} strings → {dst}"
+msgstr ""
+
+#: src/l10n_conv/cli.py:209 src/l10n_conv/cli.py:255 src/l10n_conv/cli.py:295
+#: src/l10n_conv/cli.py:329 src/l10n_conv/cli.py:380
+msgid "File format"
+msgstr ""
+
+#: src/l10n_conv/cli.py:242
+msgid "No issues found"
+msgstr ""
+
+#: src/l10n_conv/cli.py:248
+#, python-brace-format
+msgid "errors {e}, warnings {w}, info {i}"
+msgstr ""
+
+#: src/l10n_conv/cli.py:275
+#, python-brace-format
+msgid "Statistics: {file}"
+msgstr ""
+
+#: src/l10n_conv/cli.py:276
+msgid "Metric"
+msgstr ""
+
+#: src/l10n_conv/cli.py:277
+msgid "Value"
+msgstr ""
+
+#: src/l10n_conv/cli.py:280
+msgid "Total entries"
+msgstr ""
+
+#: src/l10n_conv/cli.py:281
+msgid "Translated"
+msgstr ""
+
+#: src/l10n_conv/cli.py:282
+msgid "Untranslated"
+msgstr ""
+
+#: src/l10n_conv/cli.py:283
+msgid "Fuzzy"
+msgstr ""
+
+#: src/l10n_conv/cli.py:284
+msgid "Completion"
+msgstr ""
+
+#: src/l10n_conv/cli.py:286
+msgid "Language"
+msgstr ""
+
+#: src/l10n_conv/cli.py:319
+#, python-brace-format
+msgid "Would merge {count} translations from {src} into {dst}"
+msgstr ""
+
+#: src/l10n_conv/cli.py:323
+#, python-brace-format
+msgid "Merged {count} translations → {dst}"
+msgstr ""
+
+#: src/l10n_conv/cli.py:373
+#, python-brace-format
+msgid "{added} added, {removed} removed, {changed} changed"
+msgstr ""
+
+#: src/l10n_conv/cli.py:378
+msgid "Target language code"
+msgstr ""
+
+#: src/l10n_conv/cli.py:394
+#, python-brace-format
+msgid "Would create {dst} for language {lang} with {count} entries"
+msgstr ""
+
+#: src/l10n_conv/cli.py:398
+#, python-brace-format
+msgid "Created {dst} for language {lang} with {count} entries"
+msgstr ""
