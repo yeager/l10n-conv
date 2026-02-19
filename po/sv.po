@@ -2,10 +2,10 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Daniel Nylander <po@danielnylander.se>, 2026
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -14,12 +14,11 @@ msgstr ""
 "POT-Creation-Date: 2026-02-18 12:37+0100\n"
 "PO-Revision-Date: 2026-02-18 09:15+0000\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>, 2026\n"
-"Language-Team: Swedish (https://app.transifex.com/danielnylander/teams/"
-"304816/sv/)\n"
-"Language: sv\n"
+"Language-Team: Swedish (https://app.transifex.com/danielnylander/teams/304816/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: sv\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/l10n_conv/cli.py:38
@@ -38,7 +37,7 @@ msgstr "Hoppar över {path}: {error}"
 
 #: src/l10n_conv/cli.py:78
 msgid "Universal localization file converter, validator, and compiler"
-msgstr "Universell konverterare, validerare och kompilator för lokaliseringsfiler"
+msgstr ""
 "Universell konverterare för lokaliseringsfiler, validerare och kompilator"
 
 #: src/l10n_conv/cli.py:80
@@ -62,11 +61,9 @@ msgid "Translate"
 msgstr "Översätt"
 
 #: src/l10n_conv/cli.py:88
-#, fuzzy
 msgid ""
 "l10n-conv — Universal localization file converter, validator, and compiler."
 msgstr ""
-"Universell konverterare för lokaliseringsfiler, validerare och kompilator"
 
 #: src/l10n_conv/cli.py:90
 msgid "Show application info and exit"
@@ -86,7 +83,7 @@ msgstr "Undertryck icke-väsentlig utdata (endast fel)"
 
 #: src/l10n_conv/cli.py:103
 msgid "Convert between localization formats."
-msgstr "Konvertera mellan lokaliseringsformat."
+msgstr ""
 
 #: src/l10n_conv/cli.py:105
 msgid "Input format"
@@ -138,7 +135,7 @@ msgstr "Konverterade {count} poster från {src} till {dst}"
 
 #: src/l10n_conv/cli.py:158
 msgid "Compile localization files (.po→.mo, .ts→.qm)."
-msgstr "Kompilera lokaliseringsfiler (.po→.mo, .ts→.qm)."
+msgstr ""
 
 #: src/l10n_conv/cli.py:160 src/l10n_conv/cli.py:191 src/l10n_conv/cli.py:296
 #: src/l10n_conv/cli.py:381
@@ -162,7 +159,7 @@ msgstr "Skulle kompilera {src} → {dst} (TS→QM)"
 
 #: src/l10n_conv/cli.py:182
 msgid "lrelease not found. Install Qt tools for .ts→.qm compilation."
-msgstr "lrelease hittades inte. Installera Qt-verktyg för .ts→.qm-kompilering."
+msgstr ""
 "lrelease hittades inte. Installera Qt-verktyg för kompilering av .ts→.qm."
 
 #: src/l10n_conv/cli.py:185
@@ -172,7 +169,7 @@ msgstr "Kompilering stöds inte för formatet: {fmt}"
 
 #: src/l10n_conv/cli.py:189
 msgid "Extract translatable strings from source code."
-msgstr "Extrahera översättningsbara strängar från källkod."
+msgstr ""
 
 #: src/l10n_conv/cli.py:192
 msgid "Output format (default: po)"
@@ -190,7 +187,7 @@ msgstr "Extraherade {count} strängar → {dst}"
 
 #: src/l10n_conv/cli.py:209
 msgid "Validate a localization file."
-msgstr "Validera en lokaliseringsfil."
+msgstr ""
 
 #: src/l10n_conv/cli.py:211 src/l10n_conv/cli.py:257 src/l10n_conv/cli.py:297
 #: src/l10n_conv/cli.py:331 src/l10n_conv/cli.py:382
@@ -208,7 +205,7 @@ msgstr "fel {e}, varningar {w}, info {i}"
 
 #: src/l10n_conv/cli.py:255
 msgid "Show translation statistics."
-msgstr "Visa översättningsstatistik."
+msgstr ""
 
 #: src/l10n_conv/cli.py:277
 #, python-brace-format
@@ -249,7 +246,7 @@ msgstr "Språk"
 
 #: src/l10n_conv/cli.py:293
 msgid "Merge two localization files (like msgmerge)."
-msgstr "Sammanfoga två lokaliseringsfiler (som msgmerge)."
+msgstr ""
 
 #: src/l10n_conv/cli.py:321
 #, python-brace-format
@@ -263,7 +260,7 @@ msgstr "Slog samman {count} översättningar → {dst}"
 
 #: src/l10n_conv/cli.py:328
 msgid "Show differences between two localization files."
-msgstr "Visa skillnader mellan två lokaliseringsfiler."
+msgstr ""
 
 #: src/l10n_conv/cli.py:375
 #, python-brace-format
@@ -272,7 +269,7 @@ msgstr "{added} lades till, {removed} togs bort, {changed} ändrades"
 
 #: src/l10n_conv/cli.py:378
 msgid "Create a new language file from a template."
-msgstr "Skapa en ny språkfil från en mall."
+msgstr ""
 
 #: src/l10n_conv/cli.py:380
 msgid "Target language code"
@@ -290,40 +287,4 @@ msgstr "Skapade {dst} för språket {lang} med {count} poster"
 
 #: src/l10n_conv/cli.py:403
 msgid "List all supported formats."
-msgstr "Lista alla format som stöds."
-
-msgid "Usage:"
-msgstr "Användning:"
-
-msgid "Options:"
-msgstr "Flaggor:"
-
-msgid "Commands:"
-msgstr "Kommandon:"
-
-msgid "Show this message and exit."
-msgstr "Visa detta meddelande och avsluta."
-
-msgid "Show the version and exit."
-msgstr "Visa versionen och avsluta."
-
-msgid "Error:"
-msgstr "Fel:"
-
-msgid "No such command '%s'."
-msgstr "Inget sådant kommando '%s'."
-
-msgid "Missing argument '%s'."
-msgstr "Saknat argument '%s'."
-
-msgid "Missing option '%s'."
-msgstr "Saknat alternativ '%s'."
-
-msgid "Error: Missing command."
-msgstr "Fel: Kommando saknas."
-
-msgid "Options"
-msgstr "Flaggor"
-
-msgid "Commands"
-msgstr "Kommandon"
+msgstr ""
