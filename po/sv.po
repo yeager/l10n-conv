@@ -64,6 +64,8 @@ msgstr "Översätt"
 msgid ""
 "l10n-conv — Universal localization file converter, validator, and compiler."
 msgstr ""
+"l10n-conv — Universell filkonverterare för lokalisering, validerare och "
+"kompilator."
 
 #: src/l10n_conv/cli.py:90
 msgid "Show application info and exit"
@@ -83,7 +85,7 @@ msgstr "Undertryck icke-väsentlig utdata (endast fel)"
 
 #: src/l10n_conv/cli.py:103
 msgid "Convert between localization formats."
-msgstr ""
+msgstr "Konvertera mellan lokaliseringsformat."
 
 #: src/l10n_conv/cli.py:105
 msgid "Input format"
@@ -135,7 +137,7 @@ msgstr "Konverterade {count} poster från {src} till {dst}"
 
 #: src/l10n_conv/cli.py:158
 msgid "Compile localization files (.po→.mo, .ts→.qm)."
-msgstr ""
+msgstr "Kompilera lokaliseringsfiler (.po→.mo, .ts→.qm)."
 
 #: src/l10n_conv/cli.py:160 src/l10n_conv/cli.py:191 src/l10n_conv/cli.py:296
 #: src/l10n_conv/cli.py:381
@@ -169,7 +171,7 @@ msgstr "Kompilering stöds inte för formatet: {fmt}"
 
 #: src/l10n_conv/cli.py:189
 msgid "Extract translatable strings from source code."
-msgstr ""
+msgstr "Extrahera översättningsbara strängar från källkoden."
 
 #: src/l10n_conv/cli.py:192
 msgid "Output format (default: po)"
@@ -187,7 +189,7 @@ msgstr "Extraherade {count} strängar → {dst}"
 
 #: src/l10n_conv/cli.py:209
 msgid "Validate a localization file."
-msgstr ""
+msgstr "Validera en lokaliseringsfil."
 
 #: src/l10n_conv/cli.py:211 src/l10n_conv/cli.py:257 src/l10n_conv/cli.py:297
 #: src/l10n_conv/cli.py:331 src/l10n_conv/cli.py:382
@@ -205,7 +207,7 @@ msgstr "fel {e}, varningar {w}, info {i}"
 
 #: src/l10n_conv/cli.py:255
 msgid "Show translation statistics."
-msgstr ""
+msgstr "Visa översättningsstatistik."
 
 #: src/l10n_conv/cli.py:277
 #, python-brace-format
@@ -246,7 +248,7 @@ msgstr "Språk"
 
 #: src/l10n_conv/cli.py:293
 msgid "Merge two localization files (like msgmerge)."
-msgstr ""
+msgstr "Slå ihop två lokaliseringsfiler (som msgmerge)."
 
 #: src/l10n_conv/cli.py:321
 #, python-brace-format
@@ -260,7 +262,7 @@ msgstr "Slog samman {count} översättningar → {dst}"
 
 #: src/l10n_conv/cli.py:328
 msgid "Show differences between two localization files."
-msgstr ""
+msgstr "Visa skillnader mellan två lokaliseringsfiler."
 
 #: src/l10n_conv/cli.py:375
 #, python-brace-format
@@ -269,7 +271,7 @@ msgstr "{added} lades till, {removed} togs bort, {changed} ändrades"
 
 #: src/l10n_conv/cli.py:378
 msgid "Create a new language file from a template."
-msgstr ""
+msgstr "Skapa en ny språkfil från en mall."
 
 #: src/l10n_conv/cli.py:380
 msgid "Target language code"
@@ -287,4 +289,4 @@ msgstr "Skapade {dst} för språket {lang} med {count} poster"
 
 #: src/l10n_conv/cli.py:403
 msgid "List all supported formats."
-msgstr ""
+msgstr "Lista alla format som stöds."
