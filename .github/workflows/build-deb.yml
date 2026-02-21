@@ -15,7 +15,7 @@ jobs:
           mkdir -p pkg/DEBIAN pkg/usr/lib/python3/dist-packages/l10n_conv pkg/usr/bin
           cp src/l10n_conv/*.py pkg/usr/lib/python3/dist-packages/l10n_conv/
           echo '#!/usr/bin/env python3' > pkg/usr/bin/$PKG
-          echo 'from l10n_conv.main import main' >> pkg/usr/bin/$PKG
+          echo 'from l10n_conv.cli import main' >> pkg/usr/bin/$PKG
           echo 'main()' >> pkg/usr/bin/$PKG
           chmod +x pkg/usr/bin/$PKG
           if [ -d po ]; then
