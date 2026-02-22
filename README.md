@@ -1,132 +1,25 @@
 # l10n-conv
 
-[![Version](https://img.shields.io/badge/version-1.0.5-blue)](https://github.com/yeager/l10n-conv/releases)
+Universal localization file converter, validator, and compiler. Supports PO, TS, XLIFF, JSON, YAML, ARB, and more.
 
-Universal localization file converter, validator, and compiler — **lupdate + lrelease for all l10n formats**.
+Built with Python CLI. Part of the [Danne L10n Suite](https://github.com/yeager/debian-repo).
 
 ## Installation
 
+### Debian/Ubuntu
 ```bash
-pip install l10n-conv
+sudo apt install l10n-conv
 ```
 
-## Supported Formats
-
-| Format | Extensions | Read | Write |
-|--------|-----------|------|-------|
-| Gettext PO/POT | `.po`, `.pot` | ✓ | ✓ |
-| Gettext MO | `.mo` | ✓ | ✓ |
-| Qt TS | `.ts` | ✓ | ✓ |
-| XLIFF 1.2/2.0 | `.xlf`, `.xliff` | ✓ | ✓ |
-| Java Properties | `.properties` | ✓ | ✓ |
-| Android XML | `.xml` | ✓ | ✓ |
-| iOS Strings | `.strings` | ✓ | ✓ |
-| JSON (i18next/flat) | `.json` | ✓ | ✓ |
-| YAML (Rails i18n) | `.yml`, `.yaml` | ✓ | ✓ |
-| CSV/TSV | `.csv`, `.tsv` | ✓ | ✓ |
-| TMX | `.tmx` | ✓ | ✓ |
-| TBX | `.tbx` | ✓ | ✓ |
-| PHP arrays | `.php` | ✓ | ✓ |
-| ARB (Flutter) | `.arb` | ✓ | ✓ |
-| Fluent | `.ftl` | ✓ | ✓ |
-| Windows RESX | `.resx` | ✓ | ✓ |
-
-## Usage
-
-### Convert between formats
-
+### Fedora/RPM
 ```bash
-# PO → JSON
-l10n-conv convert messages.po --to json -o messages.json
-
-# XLIFF → Android XML
-l10n-conv convert translations.xlf --to android-xml -o strings.xml
-
-# Auto-detect output format from extension
-l10n-conv convert messages.po -o translations.xlf
+sudo dnf install l10n-conv
 ```
-
-### Compile
-
-```bash
-# PO → MO (like msgfmt)
-l10n-conv compile messages.po -o messages.mo
-```
-
-### Extract strings from source code
-
-```bash
-# Extract from Python/JS/C/QML source
-l10n-conv extract src/ -o messages.po
-```
-
-### Validate
-
-```bash
-# Check for issues
-l10n-conv check messages.po
-```
-
-### Statistics
-
-```bash
-l10n-conv stats messages.po
-```
-
-### Merge
-
-```bash
-# Merge translations (like msgmerge)
-l10n-conv merge base.po updates.po -o merged.po
-```
-
-### Diff
-
-```bash
-l10n-conv diff old.po new.po
-```
-
-### Initialize new language
-
-```bash
-l10n-conv init template.pot -l sv -o sv.po
-```
-
-### Batch processing
-
-```bash
-# Convert all files in a directory
-l10n-conv convert locale/ --to json -o output/ --batch
-```
-
-## Options
-
-- `--dry-run` — Preview without writing
-- `-v/--verbose` — Detailed output
-- `--batch` — Process directories recursively
-- Pipe support: use `-` for stdin/stdout
-
-## Exit Codes
-
-- `0` — Success
-- `1` — Error
-- `2` — Warnings
-
-## 🌍 Contributing Translations
-
-This app is translated via Transifex. Help translate it into your language!
-
-**[→ Translate on Transifex](https://app.transifex.com/danielnylander/l10n-conv/)**
-
-Currently supported: Swedish (sv). More languages welcome!
-
-### For Translators
-1. Create a free account at [Transifex](https://www.transifex.com)
-2. Join the [danielnylander](https://app.transifex.com/danielnylander/) organization
-3. Start translating!
-
-Translations are automatically synced via GitHub Actions.
 
 ## License
 
-GPL-3.0-or-later — Daniel Nylander <daniel@danielnylander.se>
+GPL-3.0
+
+## Author
+
+Daniel Nylander — [danielnylander.se](https://danielnylander.se)
