@@ -2,10 +2,10 @@
 # Copyright (C) YEAR Free Software Foundation, Inc.
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Daniel Nylander <po@danielnylander.se>, 2026
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
@@ -13,11 +13,12 @@ msgstr ""
 "POT-Creation-Date: 2026-02-16 11:43+0000\n"
 "PO-Revision-Date: 2026-02-15 14:41+0000\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>, 2026\n"
-"Language-Team: Swedish (https://app.transifex.com/danielnylander/teams/304816/sv/)\n"
+"Language-Team: Swedish (https://app.transifex.com/danielnylander/"
+"teams/304816/sv/)\n"
+"Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sv\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. type: TH
@@ -80,8 +81,8 @@ msgstr "BESKRIVNING"
 #. type: Plain text
 #: data/man/l10n-conv.1:11
 msgid ""
-"B<l10n-conv> converts between different localization file formats, validates"
-" translation files, compiles them to binary formats, extracts translatable "
+"B<l10n-conv> converts between different localization file formats, validates "
+"translation files, compiles them to binary formats, extracts translatable "
 "strings from source code, and shows translation statistics."
 msgstr ""
 "B<l10n-conv> konverterar mellan olika lokaliseringsfilformat, validerar "
@@ -103,8 +104,8 @@ msgid ""
 "Format auto-detection is used when possible; use B<-f>/B<--format> to "
 "override."
 msgstr ""
-"Automatisk formatdetektering används när det är möjligt. Använd "
-"B<-f>/B<--format> för att åsidosätta detta."
+"Automatisk formatdetektering används när det är möjligt. Använd B<-f>/B<--"
+"format> för att åsidosätta detta."
 
 #. type: SH
 #: data/man/l10n-conv.1:18
@@ -228,8 +229,7 @@ msgstr "B<--to> I<FORMAT>"
 msgid ""
 "Output format. Required unless B<-o> specifies a file with a recognizable "
 "extension."
-msgstr ""
-"Utdataformat. Krävs om inte B<-o> anger en fil med en känd filändelse."
+msgstr "Utdataformat. Krävs om inte B<-o> anger en fil med en känd filändelse."
 
 #. type: TP
 #: data/man/l10n-conv.1:51 data/man/l10n-conv.1:77 data/man/l10n-conv.1:98
@@ -292,11 +292,11 @@ msgstr "compile"
 #. type: Plain text
 #: data/man/l10n-conv.1:71
 msgid ""
-"Compile localization files to binary formats (.po\\[u2192].mo, "
-".ts\\[u2192].qm)."
+"Compile localization files to binary formats (.po\\[u2192].mo, .ts\\[u2192]."
+"qm)."
 msgstr ""
-"Kompilera lokaliseringsfiler till binära format (.po\\[u2192].mo, "
-".ts\\[u2192].qm)."
+"Kompilera lokaliseringsfiler till binära format (.po\\[u2192].mo, ."
+"ts\\[u2192].qm)."
 
 #. type: Plain text
 #: data/man/l10n-conv.1:74
@@ -438,8 +438,7 @@ msgstr "Fil att analysera."
 #. type: Plain text
 #: data/man/l10n-conv.1:146
 msgid ""
-"Shows: total entries, translated, untranslated, fuzzy, completion "
-"percentage."
+"Shows: total entries, translated, untranslated, fuzzy, completion percentage."
 msgstr ""
 "Visar: totalt antal poster, översatta, oöversatta, luddiga, procentuell "
 "fullständighet."
@@ -530,13 +529,13 @@ msgstr "FORMAT SOM STÖDS"
 #. type: Plain text
 #: data/man/l10n-conv.1:192
 msgid ""
-"PO/POT (GNU gettext), XLIFF 1.2/2.0, TS (Qt Linguist), JSON (i18next, Chrome"
-" extensions), YAML, ARB (Flutter/Dart), Properties (Java), "
-"Strings/Stringsdict (Apple iOS/macOS), Android XML, PHP arrays, CSV."
+"PO/POT (GNU gettext), XLIFF 1.2/2.0, TS (Qt Linguist), JSON (i18next, Chrome "
+"extensions), YAML, ARB (Flutter/Dart), Properties (Java), Strings/"
+"Stringsdict (Apple iOS/macOS), Android XML, PHP arrays, CSV."
 msgstr ""
-"PO/POT (GNU gettext), XLIFF 1.2/2.0, TS (Qt Linguist), JSON (i18next, "
-"Chrome-tillägg), YAML, ARB (Flutter/Dart), Properties (Java), "
-"Strings/Stringsdict (Apple iOS/macOS), Android XML, PHP-arrayer, CSV."
+"PO/POT (GNU gettext), XLIFF 1.2/2.0, TS (Qt Linguist), JSON (i18next, Chrome-"
+"tillägg), YAML, ARB (Flutter/Dart), Properties (Java), Strings/Stringsdict "
+"(Apple iOS/macOS), Android XML, PHP-arrayer, CSV."
 
 #. type: SH
 #: data/man/l10n-conv.1:192
@@ -576,8 +575,7 @@ msgstr "B<2>"
 
 #. type: Plain text
 #: data/man/l10n-conv.1:202
-msgid ""
-"Usage error (unknown format, file not found, missing required options)."
+msgid "Usage error (unknown format, file not found, missing required options)."
 msgstr ""
 "Användningsfel (okänt format, filen hittades inte, nödvändiga flaggor "
 "saknas)."
