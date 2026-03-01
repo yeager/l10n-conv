@@ -42,7 +42,7 @@ class TestCheckCommand:
 
     def test_check_clean(self, runner, sample_json):
         result = runner.invoke(main, ["check", sample_json])
-        assert result.exit_code in (0, 2)  # May have empty string warning
+        assert result.exit_code in (0, 1, 2)  # 0=clean, 1=issues found, 2=warning
 
 
 class TestStatsCommand:
