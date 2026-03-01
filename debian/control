@@ -1,0 +1,22 @@
+Source: l10n-conv
+Section: devel
+Priority: optional
+Maintainer: Daniel Nylander <daniel@danielnylander.se>
+Build-Depends: debhelper-compat (= 13),
+               dh-python,
+               python3-all,
+               python3-setuptools,
+               pybuild-plugin-pyproject
+Standards-Version: 4.7.0
+Homepage: https://github.com/yeager/l10n-conv
+Vcs-Git: https://github.com/yeager/l10n-conv.git
+Vcs-Browser: https://github.com/yeager/l10n-conv
+
+Package: l10n-conv
+Architecture: all
+Depends: ${python3:Depends}, ${misc:Depends}
+Description: Universal localization file converter, validator, and compiler
+ l10n-conv converts between various localization file formats including
+ PO, XLIFF, JSON, YAML, TS, Properties, ARB, Strings, and TOML.
+ It also provides validation and compilation features similar to
+ lupdate and lrelease for all l10n formats.
