@@ -112,4 +112,4 @@ class TestVersion:
     def test_version(self, runner):
         result = runner.invoke(main, ["--version"])
         assert result.exit_code == 0
-        assert "1.0.5" in result.output
+        assert "1.0.9" in result.output
