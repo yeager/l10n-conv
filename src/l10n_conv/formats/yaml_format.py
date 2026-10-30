@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import yaml
 
-from ..model import TranslationCatalog, TranslationEntry, EntryState
+from ..model import EntryState, TranslationCatalog, TranslationEntry
 from ..registry import register_format
 from .base import BaseFormat
 
@@ -18,7 +18,7 @@ class YamlFormat(BaseFormat):
 
         # Rails format: top-level key is locale
         if len(data) == 1:
-            lang = list(data.keys())[0]
+            lang = next(iter(data.keys()))
             if isinstance(data[lang], dict):
                 catalog.target_language = str(lang)
                 data = data[lang]

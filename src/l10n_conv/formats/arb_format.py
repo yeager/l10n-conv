@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 
-from ..model import TranslationCatalog, TranslationEntry, EntryState
+from ..model import EntryState, TranslationCatalog, TranslationEntry
 from ..registry import register_format
 from .base import BaseFormat
 
@@ -20,7 +20,7 @@ class ArbFormat(BaseFormat):
         catalog.metadata = {k: v for k, v in data.items() if k.startswith("@@")}
 
         for key, value in data.items():
-            if key.startswith("@@") or key.startswith("@"):
+            if key.startswith(("@@", "@")):
                 continue
             if not isinstance(value, str):
                 continue

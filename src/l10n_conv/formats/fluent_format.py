@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import re
 
-from ..model import TranslationCatalog, TranslationEntry, EntryState
+from ..model import EntryState, TranslationCatalog, TranslationEntry
 from ..registry import register_format
 from .base import BaseFormat
 
@@ -42,8 +42,7 @@ class FluentFormat(BaseFormat):
         with open(filepath, "w", encoding="utf-8") as f:
             for i, entry in enumerate(catalog.entries):
                 if entry.comment:
-                    for line in entry.comment.split("\n"):
-                        f.write(f"# {line}\n")
+                    f.writelines(f"# {line}\n" for line in entry.comment.split("\n"))
                 f.write(f"{entry.key} = {entry.target or ''}\n")
                 if i < len(catalog.entries) - 1:
                     f.write("\n")

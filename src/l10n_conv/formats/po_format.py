@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import polib
 
-from ..model import TranslationCatalog, TranslationEntry, EntryState
+from ..model import EntryState, TranslationCatalog, TranslationEntry
 from ..registry import register_format
 from .base import BaseFormat
 

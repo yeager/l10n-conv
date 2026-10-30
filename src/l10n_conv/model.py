@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import enum
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional
 
 
 class EntryState(enum.Enum):
@@ -24,11 +23,11 @@ class TranslationEntry:
     context: str = ""
     comment: str = ""
     translator_comment: str = ""
-    references: List[str] = field(default_factory=list)
-    flags: List[str] = field(default_factory=list)
+    references: list[str] = field(default_factory=list)
+    flags: list[str] = field(default_factory=list)
     plural_source: str = ""
-    plural_targets: Dict[int, str] = field(default_factory=dict)
-    metadata: Dict[str, str] = field(default_factory=dict)
+    plural_targets: dict[int, str] = field(default_factory=dict)
+    metadata: dict[str, str] = field(default_factory=dict)
 
     @property
     def is_plural(self) -> bool:
@@ -44,11 +43,11 @@ class TranslationEntry:
 @dataclass
 class TranslationCatalog:
     """A collection of translation entries (one file)."""
-    entries: List[TranslationEntry] = field(default_factory=list)
+    entries: list[TranslationEntry] = field(default_factory=list)
     source_language: str = ""
     target_language: str = ""
-    metadata: Dict[str, str] = field(default_factory=dict)
-    comments: List[str] = field(default_factory=list)
+    metadata: dict[str, str] = field(default_factory=dict)
+    comments: list[str] = field(default_factory=list)
     plural_forms: str = ""
 
     @property
@@ -70,7 +69,7 @@ class TranslationCatalog:
             return 100.0
         return round(self.translated_count / total * 100, 1)
 
-    def get_entry(self, key: str, context: str = "") -> Optional[TranslationEntry]:
+    def get_entry(self, key: str, context: str = "") -> TranslationEntry | None:
         for e in self.entries:
             if e.key == key and e.context == context:
                 return e

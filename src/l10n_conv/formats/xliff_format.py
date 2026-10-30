@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from lxml import etree
 
-from ..model import TranslationCatalog, TranslationEntry, EntryState
+from ..model import EntryState, TranslationCatalog, TranslationEntry
 from ..registry import register_format
 from .base import BaseFormat
 
@@ -72,11 +72,7 @@ class XliffFormat(BaseFormat):
             state_attr = seg.get("state", "initial")
 
             state = EntryState.UNTRANSLATED
-            if state_attr == "final" or state_attr == "translated":
-                state = EntryState.TRANSLATED
-            elif state_attr == "reviewed":
-                state = EntryState.TRANSLATED
-            elif target:
+            if state_attr == "final" or state_attr == "translated" or state_attr == "reviewed" or target:
                 state = EntryState.TRANSLATED
 
             notes = unit.find("x:notes", ns)
@@ -98,7 +94,7 @@ class XliffFormat(BaseFormat):
     def write(self, catalog: TranslationCatalog, filepath: str) -> None:
         # Write XLIFF 1.2
         nsmap = {None: NS12}
-        root = etree.Element("{%s}xliff" % NS12, nsmap=nsmap, version="1.2")
+        root = etree.Element(f"{{{NS12}}}xliff", nsmap=nsmap, version="1.2")
         file_el = etree.SubElement(root, "file")
         file_el.set("source-language", catalog.source_language or "en")
         if catalog.target_language:

@@ -13,7 +13,7 @@ from rich.console import Console
 from rich.table import Table
 
 from . import __version__
-from .model import TranslationCatalog, EntryState
+from .model import EntryState, TranslationCatalog
 from .registry import detect_format, get_format, list_formats
 
 TEXTDOMAIN = "l10n-conv"
@@ -67,7 +67,7 @@ def _process_batch(input_path: str, callback, **kwargs):
                 fpath = os.path.join(root, f)
                 try:
                     callback(fpath, **kwargs)
-                except Exception as e:
+                except Exception as e:  # noqa: BLE001 - keep batch processing after one bad file
                     console.print(f"[yellow]⚠ {_('Skipping {path}: {error}').format(path=fpath, error=e)}[/yellow]")
 
 
@@ -214,7 +214,7 @@ def check(ctx, file, fmt):
     """Validate a localization file."""
     from .checker import check_catalog
 
-    catalog, detected = _read_catalog(file, fmt)
+    catalog, _detected = _read_catalog(file, fmt)
     results = check_catalog(catalog)
 
     json_output = ctx.obj.get("json")
@@ -258,7 +258,7 @@ def check(ctx, file, fmt):
 @click.pass_context
 def stats(ctx, file, fmt):
     """Show translation statistics."""
-    catalog, detected = _read_catalog(file, fmt)
+    catalog, _detected = _read_catalog(file, fmt)
     json_output = ctx.obj.get("json")
     quiet = ctx.obj.get("quiet")
 

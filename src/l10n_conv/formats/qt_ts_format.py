@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from lxml import etree
 
-from ..model import TranslationCatalog, TranslationEntry, EntryState
+from ..model import EntryState, TranslationCatalog, TranslationEntry
 from ..registry import register_format
 from .base import BaseFormat
 
@@ -125,9 +125,7 @@ class QtTsFormat(BaseFormat):
                     nf = etree.SubElement(trans, "numerusform")
                     nf.text = entry.plural_targets[i]
             else:
-                if entry.state == EntryState.FUZZY:
-                    trans.set("type", "unfinished")
-                elif entry.state == EntryState.UNTRANSLATED:
+                if entry.state == EntryState.FUZZY or entry.state == EntryState.UNTRANSLATED:
                     trans.set("type", "unfinished")
                 trans.text = entry.target
 

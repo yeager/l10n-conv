@@ -4,9 +4,8 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
-from typing import List
 
-from .model import TranslationCatalog, EntryState
+from .model import EntryState, TranslationCatalog
 
 
 @dataclass
@@ -17,7 +16,7 @@ class CheckResult:
     details: str = ""
 
 
-def check_catalog(catalog: TranslationCatalog) -> List[CheckResult]:
+def check_catalog(catalog: TranslationCatalog) -> list[CheckResult]:
     results = []
 
     # Check for missing translations

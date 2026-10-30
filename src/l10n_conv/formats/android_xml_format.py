@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from lxml import etree
 
-from ..model import TranslationCatalog, TranslationEntry, EntryState
+from ..model import EntryState, TranslationCatalog, TranslationEntry
 from ..registry import register_format
 from .base import BaseFormat
 

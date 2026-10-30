@@ -3,15 +3,15 @@
 from __future__ import annotations
 
 import os
-from typing import Dict, Optional, Type, TYPE_CHECKING
+from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from .formats.base import BaseFormat
 
-_FORMAT_REGISTRY: Dict[str, Type["BaseFormat"]] = {}
+_FORMAT_REGISTRY: dict[str, type[BaseFormat]] = {}
 
 # Extension to format name mapping
-_EXT_MAP: Dict[str, str] = {
+_EXT_MAP: dict[str, str] = {
     ".po": "po",
     ".pot": "po",
     ".mo": "mo",
@@ -46,14 +46,14 @@ def register_format(name: str):
     return decorator
 
 
-def get_format(name: str) -> Type["BaseFormat"]:
+def get_format(name: str) -> type[BaseFormat]:
     _ensure_loaded()
     if name not in _FORMAT_REGISTRY:
         raise ValueError(f"Unknown format: {name}. Available: {', '.join(sorted(_FORMAT_REGISTRY))}")
     return _FORMAT_REGISTRY[name]
 
 
-def detect_format(filepath: str) -> Optional[str]:
+def detect_format(filepath: str) -> str | None:
     """Detect format from file extension and content."""
     ext = os.path.splitext(filepath)[1].lower()
     if ext == ".xml":
@@ -71,18 +71,16 @@ def detect_format(filepath: str) -> Optional[str]:
                 return "qt-ts"
             if "<xliff" in head:
                 return "xliff"
-        except Exception:
-            pass
-        return "android-xml"
+        except (OSError, UnicodeError):
+            return "android-xml"
     if ext == ".json":
         try:
             with open(filepath, "r", encoding="utf-8") as f:
                 head = f.read(200)
             if '"@@locale"' in head or '"@@last_modified"' in head:
                 return "arb"
-        except Exception:
-            pass
-        return "json"
+        except (OSError, UnicodeError):
+            return "json"
     return _EXT_MAP.get(ext)
 
 
@@ -99,9 +97,20 @@ def _ensure_loaded():
         return
     _loaded = True
     from .formats import (  # noqa: F401
-        po_format, mo_format, qt_ts_format, xliff_format,
-        properties_format, android_xml_format, strings_format,
-        json_format, yaml_format, csv_format, tmx_format,
-        tbx_format, php_format, arb_format, fluent_format,
+        android_xml_format,
+        arb_format,
+        csv_format,
+        fluent_format,
+        json_format,
+        mo_format,
+        php_format,
+        po_format,
+        properties_format,
+        qt_ts_format,
         resx_format,
+        strings_format,
+        tbx_format,
+        tmx_format,
+        xliff_format,
+        yaml_format,
     )

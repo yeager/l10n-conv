@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import re
 
-from ..model import TranslationCatalog, TranslationEntry, EntryState
+from ..model import EntryState, TranslationCatalog, TranslationEntry
 from ..registry import register_format
 from .base import BaseFormat
 
@@ -20,8 +20,8 @@ class PropertiesFormat(BaseFormat):
                 line = line.rstrip("\n\r")
                 stripped = line.strip()
 
-                if not stripped or stripped.startswith("#") or stripped.startswith("!"):
-                    if stripped.startswith("#") or stripped.startswith("!"):
+                if not stripped or stripped.startswith(("#", "!")):
+                    if stripped.startswith(("#", "!")):
                         comment_buf.append(stripped[1:].strip())
                     continue
 
@@ -46,7 +46,6 @@ class PropertiesFormat(BaseFormat):
         with open(filepath, "w", encoding="utf-8") as f:
             for entry in catalog.entries:
                 if entry.comment:
-                    for line in entry.comment.split("\n"):
-                        f.write(f"# {line}\n")
+                    f.writelines(f"# {line}\n" for line in entry.comment.split("\n"))
                 value = entry.target or entry.source or ""
                 f.write(f"{entry.key}={value}\n")

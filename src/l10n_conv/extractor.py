@@ -4,9 +4,8 @@ from __future__ import annotations
 
 import os
 import re
-from typing import List, Tuple
 
-from .model import TranslationCatalog, TranslationEntry, EntryState
+from .model import EntryState, TranslationCatalog, TranslationEntry
 
 # Patterns for different languages
 PATTERNS = {
@@ -45,7 +44,7 @@ PATTERNS[".jsx"] = PATTERNS[".js"]
 PATTERNS[".tsx"] = PATTERNS[".js"]
 
 
-def extract_from_file(filepath: str) -> List[Tuple[str, str, int]]:
+def extract_from_file(filepath: str) -> list[tuple[str, str, int]]:
     """Extract (string, plural_or_empty, line_number) from a file."""
     ext = os.path.splitext(filepath)[1].lower()
     patterns = PATTERNS.get(ext)
