@@ -22,7 +22,7 @@ jobs:
         run: |
           PKG=l10n-conv
           VER=${{ steps.version.outputs.version }}
-          ROOT=pkg-deb/${PKG}_${VER}-1_all
+          ROOT=pkg-deb/${PKG}_${VER}-2_all
           mkdir -p ${ROOT}/DEBIAN
           mkdir -p ${ROOT}/usr/bin
           mkdir -p ${ROOT}/usr/lib/python3/dist-packages
@@ -66,7 +66,7 @@ jobs:
 
           cat > ${ROOT}/DEBIAN/control << EOF
           Package: ${PKG}
-          Version: ${VER}-1
+          Version: ${VER}-2
           Architecture: all
           Maintainer: Daniel Nylander <daniel@danielnylander.se>
           Depends: python3 (>= 3.9)
