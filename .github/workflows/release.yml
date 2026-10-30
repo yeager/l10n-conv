@@ -87,5 +87,5 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           VER=${{ steps.version.outputs.version }}
-          gh release upload "v${VER}" l10n-conv_${VER}-1_all.deb --clobber 2>/dev/null || \
-          gh release upload "${GITHUB_REF_NAME}" l10n-conv_${VER}-1_all.deb --clobber
+          gh release upload "v${VER}" l10n-conv_${VER}-2_all.deb --clobber 2>/dev/null || \
+          gh release upload "${GITHUB_REF_NAME}" l10n-conv_${VER}-2_all.deb --clobber
